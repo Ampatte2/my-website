@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils"
 
-async function VideoPlayer({
+function VideoPlayer({
   className,
   ...props
 }: React.IframeHTMLAttributes<HTMLIFrameElement>) {
@@ -11,4 +11,24 @@ async function VideoPlayer({
   />
 }
 
-export { VideoPlayer }
+type YoutubePlayerProps = {
+  src: string,
+  title: string,
+  height: number,
+  width: number
+}
+function YoutubePlayer({
+  className,
+  ...props
+}: React.IframeHTMLAttributes<HTMLIFrameElement> & YoutubePlayerProps) {
+  return <iframe
+    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    frameBorder={0}
+    allowFullScreen
+    referrerPolicy="strict-origin-when-cross-origin"
+    {...props}
+    className={cn("rounded-md bg-muted", className)}
+  />
+}
+
+export { VideoPlayer, YoutubePlayer }

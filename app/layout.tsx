@@ -30,7 +30,9 @@ export default function RootLayout({
         fontSans.variable
       )}>
         <MainNav />
-        {children}
+        <div className="pt-10 pb-20 px-10">
+          {children}
+        </div>
       </body>
     </html>
   );

@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils"
 import { PropsWithChildren } from "react"
 
 const Row = (props: PropsWithChildren<{ classes?: string }>) =>
-  <div className={`flex flex-row w-full mb-4 ${cn(props.classes)}`}>
+  <div className={`flex flex-row ${cn(props.classes)}`}>
     {props.children}
   </div>
 

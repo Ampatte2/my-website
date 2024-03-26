@@ -56,7 +56,7 @@ Button.displayName = "Button"
 
 const ButtonLink = (props: React.PropsWithChildren<ButtonProps & { href: string }>) => {
 
-  return <Button {...props} asChild><Link href={props.href}>{props.children}</Link></Button>
+  return <Button {...props} asChild variant="outline"><Link href={props.href}>{props.children}</Link></Button>
 }
 
 export { Button, ButtonLink, buttonVariants }

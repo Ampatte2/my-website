@@ -1,40 +1,40 @@
-import { ButtonLink } from '@/components/ui/button';
-import { PropsWithChildren } from 'react';
+"use client";
 
-const classProp = (classes?: string) => classes || "";
+import { MailToAnchor } from '@/components/ui/anchors';
+import { DatePicker } from '@/components/ui/date-picker';
+import { Column, Row } from '@/components/ui/flex';
+import { LinkedinIcon, Mail, Phone, TwitchIcon, YoutubeIcon } from 'lucide-react';
 
-const Row = (props: PropsWithChildren<{ classes?: string }>) =>
-  <div className={`flex flex-row w-full mb-4 ${classProp(props.classes)}`}>
-    {props.children}
-  </div>
-
-const Column = (props: PropsWithChildren<{ classes?: string }>) =>
-  <div className={`flex flex-col ${classProp(props.classes)}`}>
-    {props.children}
-  </div>
-
-
-export default function home() {
-  return <div className="pt-10 pb-20 px-10">
+export default function Contact() {
+  return <div className="flex flex-col justify-center gap-y-1">
     <Row>
-      <h1 className='m-auto'>Greater Phoenix Drone Photography</h1>
+      <h1>Arizona Aerial Videography</h1>
     </Row>
-    <Row classes='justify-around'>
-      <ButtonLink href="/">
-        <h5>Native Phoenician</h5>
-      </ButtonLink>
-      <ButtonLink href="/">
-        <h5>Real Estate</h5>
-      </ButtonLink>
-      <ButtonLink href="/">
-        <h5>Action Photography</h5>
-      </ButtonLink>
-      <ButtonLink href="/">
-        <h5>Part 107 Licensed</h5>
-      </ButtonLink>
+    <Row classes='gap-x-1'>
+      <a href='tel:855-278-5080' className='flex flex-row'><Phone /><h4>855-278-5080</h4></a>
     </Row>
-    <Row classes='justify-around'>
-      <ButtonLink href="/About">Learn More About Us</ButtonLink>
+    <Row classes='gap-x-1'>
+      <LinkedinIcon /><h4>me@linkedIn</h4>
+    </Row>
+    <Row classes='gap-x-1'>
+      <YoutubeIcon /><h4>Youtube</h4>
+    </Row>
+    <Row classes='gap-x-1'>
+      <TwitchIcon /><h4>Twitch</h4>
+    </Row>
+    <Column classes='gap-y-1'>
+      <h3>My Availibility</h3>
+      <DatePicker
+        onSelectDate={() => ({})}
+      />
+    </Column>
+    <Row>
+      <Mail />
+      <h4>
+        <MailToAnchor subject="Arizona Aerial Videography" body={["When:", "Where:", "Type: Action Cinematography Videography", "Description:"]}>
+          dog@dog.com
+        </MailToAnchor>
+      </h4>
     </Row>
   </div>
 }
