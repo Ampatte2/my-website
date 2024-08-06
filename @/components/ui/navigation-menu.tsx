@@ -122,6 +122,13 @@ function MainNav() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
+          <Link href="/" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Main
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
           <Link href="/about" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               About
@@ -175,7 +182,9 @@ const ListItem = React.forwardRef<
     </li>
   )
 })
+
 ListItem.displayName = "ListItem"
+
 export {
   navigationMenuTriggerStyle,
   NavigationMenu,

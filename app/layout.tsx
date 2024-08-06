@@ -13,8 +13,8 @@ const fontSans = FontSans({
 })
 
 export const metadata: Metadata = {
-  title: "Schrodinger's Failure",
-  description: "Archimedes Principle",
+  title: "Andrew Patterson",
+  description: "Andrew Patterson's website of marketable skills",
 };
 
 export default function RootLayout({
@@ -30,7 +30,7 @@ export default function RootLayout({
         fontSans.variable
       )}>
         <MainNav />
-        <div className="pt-10 pb-20 px-10">
+        <div className="pt-10 px-10 h-full w-full">
           {children}
         </div>
       </body>

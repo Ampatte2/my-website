@@ -5,9 +5,9 @@ import { useRouter } from 'next/router';
 
 export default function Home() {
 
-  return <div className="">
+  return <>
     <Row>
-      <h1 className='m-auto text-xl'>Arizona Aerial Videography</h1>
+      <h1 className='m-auto text-xl'>Andrew Patterson</h1>
     </Row>
     <Row classes='justify-center'>
       <YoutubePlayer
@@ -17,19 +17,25 @@ export default function Home() {
         src="https://www.youtube.com/embed/iYkqQPbNtTg?si=b1Cqu740a5-0wlCy"
       />
     </Row>
-    <Row classes='justify-around mt-10'>
+    <div className='justify-around mt-10 flex flex-col md:flex-row'>
+      <ButtonLink href="/tldr">
+        <h5>Executive Overview</h5>
+      </ButtonLink>
       <ButtonLink href="/about">
         <h5>Native Phoenician</h5>
       </ButtonLink>
       <ButtonLink href="/gallery/action">
-        <h5>Action Photography</h5>
+        <h5>Software Engineer</h5>
       </ButtonLink>
       <ButtonLink href="/gallery/cinematic">
-        <h5>Part 107 Licensed</h5>
+        <h5>Leader</h5>
       </ButtonLink>
+      <ButtonLink href="/gallery/cinematic">
+        <h5>Licensed UAS Pilot</h5>
+      </ButtonLink>
+    </div>
+    <Row classes='justify-around mt-auto'>
+      <ButtonLink href="/about">About Me</ButtonLink>
     </Row>
-    <Row classes='justify-around'>
-      <ButtonLink href="/about">About Us</ButtonLink>
-    </Row>
-  </div>
+  </>
 }
