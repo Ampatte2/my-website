@@ -79,4 +79,25 @@
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
+  html {
+    font-size: 16px;
+  }
+}
+
+.timeline-item {
+  padding: 0 2rem;
+}
+.timeline-circle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: gray;
+  width: 1.5rem;
+  height: 1.5rem;
+  left: 1.75rem;
+}
+.timeline-item:not(:last-child) {
+  border-left: 2px solid gray;
+}
+.timeline-content {
+  padding-bottom: 1rem;
 }

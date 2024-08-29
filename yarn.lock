@@ -1368,6 +1368,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/chroma-js@npm:^2.4.3":
+  version: 2.4.4
+  resolution: "@types/chroma-js@npm:2.4.4"
+  checksum: 10c0/8acd341c523fc960686ed9e60f23ae643da35bddf012b4b18cb0d941ee3bf82087262245ffa8c886ea31571cd5dc6eb553e849fab3c0509ea2c3a045a246178c
+  languageName: node
+  linkType: hard
+
 "@types/json5@npm:^0.0.29":
   version: 0.0.29
   resolution: "@types/json5@npm:0.0.29"
@@ -1971,6 +1978,13 @@ __metadata:
   version: 2.0.0
   resolution: "chownr@npm:2.0.0"
   checksum: 10c0/594754e1303672171cc04e50f6c398ae16128eb134a88f801bf5354fd96f205320f23536a045d9abd8b51024a149696e51231565891d4efdab8846021ecf88e6
+  languageName: node
+  linkType: hard
+
+"chroma-js@npm:^2.4.2":
+  version: 2.6.0
+  resolution: "chroma-js@npm:2.6.0"
+  checksum: 10c0/6e17f43246f9b3eba8a9db67f5ee9a2d0ef1360077211887da09ec1f0934bb98a358eefaf021003c0bd47cbab540f573a373f362d6b2ba04d0e80ab7677e1640
   languageName: node
   linkType: hard
 
@@ -4022,6 +4036,7 @@ __metadata:
     next: "npm:14.1.1"
     postcss: "npm:^8"
     react: "npm:^18"
+    react-activity-calendar: "npm:^2.4.0"
     react-day-picker: "npm:^8.10.0"
     react-dom: "npm:^18"
     tailwind-merge: "npm:^2.2.2"
@@ -4485,6 +4500,20 @@ __metadata:
   version: 1.2.3
   resolution: "queue-microtask@npm:1.2.3"
   checksum: 10c0/900a93d3cdae3acd7d16f642c29a642aea32c2026446151f0778c62ac089d4b8e6c986811076e1ae180a694cedf077d453a11b58ff0a865629a4f82ab558e102
+  languageName: node
+  linkType: hard
+
+"react-activity-calendar@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "react-activity-calendar@npm:2.4.0"
+  dependencies:
+    "@types/chroma-js": "npm:^2.4.3"
+    chroma-js: "npm:^2.4.2"
+    date-fns: "npm:^3.6.0"
+  peerDependencies:
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  checksum: 10c0/f5f4f8941b6b217b1f457622a7c25d22e02600db20407ea0ef7daaac59322c89511ad78987895c72f3eded8c5c66a9ea27073570e7302c08ee088214d0d1648c
   languageName: node
   linkType: hard
 
