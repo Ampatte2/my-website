@@ -86,6 +86,7 @@
 
 .timeline-item {
   padding: 0 2rem;
+  position: relative;
 }
 .timeline-circle {
   position: absolute;
@@ -93,11 +94,34 @@
   background-color: gray;
   width: 1.5rem;
   height: 1.5rem;
-  left: 1.75rem;
+  top: 0;
+  left: -0.8rem;
 }
+
 .timeline-item:not(:last-child) {
   border-left: 2px solid gray;
 }
+
 .timeline-content {
   padding-bottom: 1rem;
 }
+
+.mosaic {
+  display: flex;
+  column-gap: 1rem;
+  width: 100%;
+}
+
+.mosaic-tile {
+  background-color: red;
+  display: flex;
+  height: 10rem;
+  width: 25vw;
+  &:hover {
+    background-color: blue;
+    transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);
+    transform-origin: center;
+    transition-duration: 500ms;
+  }
+}
+
