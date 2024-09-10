@@ -52,7 +52,11 @@ const Timeline = (props: TimelineProps) => {
   );
 };
 
-const Tile = (props: PropsWithChildren<object>) => <div className="mosaic-tile"><p className="m-auto">{props.children}</p></div>;
+const Tile = (props: { frontTitle: string, backTitle: string }) => <div className="mosaic-tile-container">
+  <p className="front-face">{props.frontTitle}</p>
+  <p className="back-face">{props.backTitle}</p>
+  <div className="mosaic-tile" />
+</div>;
 
 const data = [
   { startDate: new Date('2018 01 01'), endDate: new Date('2019 06 01'), title: 'Procleos Labs', content: 'Trading application that was focused on individual investors' },
@@ -79,10 +83,10 @@ export default async function TLDR() {
     <P>There is no such thing as a problem, only a challenge waiting to be solved.</P>
     <H3>Accomplishments</H3>
     <div className="mosaic">
-      <Tile>Self Taught Developer</Tile>
-      <Tile>Engineering Team Lead</Tile>
-      <Tile>Eagle Scout</Tile>
-      <Tile>Part 107 Licensed</Tile>
+      <Tile frontTitle="Self Taught Developer" backTitle="Used tech and played videogames for the majority of my life. I love to learn and programming combined both these passions" />
+      <Tile frontTitle="Engineering Team Lead" backTitle="Started as a junior level developer and quickly learned and built upon the patterns that existed in the codebase. Soon I was ablke to teach other juniors and was promoted to a lead. You know you know a topic well if you can teach others" />
+      <Tile frontTitle="Eagle Scout" backTitle="I follow through with anything I set my mind to even from an early age. I'm loyal and see things through to the end." />
+      <Tile frontTitle="Part 107 Licensed" backTitle="I am commericially certified to fly up to 49 lbs drones. The drones that I fly are custom built from my own designs. I solder the electronics, assemble the frames, and flash/configure the firmware." />
     </div>
     <div className="md:grid md:grid-cols-5 flex flex-col">
       <Timeline data={data} className="col-span-3" />

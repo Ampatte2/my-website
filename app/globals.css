@@ -106,22 +106,68 @@
   padding-bottom: 1rem;
 }
 
+
 .mosaic {
-  display: flex;
+  --tile-height: 15rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 1rem;
   width: 100%;
-}
+  height: var(--tile-height);
 
-.mosaic-tile {
-  background-color: red;
-  display: flex;
-  height: 10rem;
-  width: 25vw;
-  &:hover {
-    background-color: blue;
-    transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);
-    transform-origin: center;
+  .mosaic-tile {
+    background-color: gold;
+    color: white;
+    position: absolute;
+    padding: 1rem;
+    z-index: 1;
+    height: var(--tile-height);
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    transition: background-color matrix3d;
     transition-duration: 500ms;
+    width: 100%;
   }
 }
 
+
+.front-face,
+.back-face {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: rotate(0) translate(-50%, -50%);
+  transition-property: opacity;
+  transition-delay: 400ms;
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+  z-index: 2;
+}
+
+.back-face {
+  opacity: 0;
+}
+
+.front-face {
+  opacity: 1;
+}
+
+.mosaic-tile-container {
+  color: black;
+  display: flex;
+  position: relative;
+
+  &:hover {
+    .mosaic-tile {
+      background-color: blue;
+      transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);
+      transform-origin: center;
+    }
+    .front-face {
+      opacity: 0;
+    }
+    .back-face {
+      opacity: 1;
+    }
+  }
+}
