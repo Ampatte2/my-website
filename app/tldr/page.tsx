@@ -1,4 +1,5 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import Image from "next/image";
 import { parse, differenceInCalendarYears, differenceInCalendarMonths } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import ActivityCalendar, { Activity } from "react-activity-calendar";
@@ -34,23 +35,22 @@ const formatEmployedLength = (start: Date, end: Date) => {
   return `${yearCopy} ${monthCopy}`
 }
 
-const Timeline = (props: TimelineProps) => {
-  return (
-    <div className={cn("flex flex-col", props.className)}>
-      {props.data.map((item, index) => (
-        <div key={index} className="timeline-item">
-          <div className="timeline-circle"></div>
-          <div className="timeline-content">
-            <H2>{item.title}</H2>
-            <H4 className="mt-2">{formatDate.format(item.startDate)} to {formatDate.format(item.endDate)}</H4>
-            <H4>{formatEmployedLength(item.startDate, item.endDate)}</H4>
-            <P className="mt-2">{item.content}</P>
-          </div>
+const Timeline = (props: TimelineProps) => (
+  <div className={cn("flex flex-col", props.className)}>
+    {props.data.map((item, index) => (
+      <div key={index} className="timeline-item">
+        <div className="timeline-circle"></div>
+        <div className="timeline-content">
+          <H2>{item.title}</H2>
+          <H4 className="mt-2">{formatDate.format(item.startDate)} to {formatDate.format(item.endDate)}</H4>
+          <H4>{formatEmployedLength(item.startDate, item.endDate)}</H4>
+          <P className="mt-2">{item.content}</P>
         </div>
-      ))}
-    </div>
-  );
-};
+      </div>
+    ))}
+  </div>
+);
+
 
 const Tile = (props: { frontTitle: string, backTitle: string }) => <div className="mosaic-tile-container">
   <p className="front-face">{props.frontTitle}</p>
@@ -78,15 +78,13 @@ export default async function TLDR() {
     ), [])
 
   return <Column classes="gap-1">
-    <H1>Andrew M. Patterson</H1>
-    <H2>Software Engineer, UAS Pilot, Tinkerer</H2>
-    <P>There is no such thing as a problem, only a challenge waiting to be solved.</P>
-    <H3>Accomplishments</H3>
-    <div className="mosaic">
-      <Tile frontTitle="Self Taught Developer" backTitle="Used tech and played videogames for the majority of my life. I love to learn and programming combined both these passions" />
-      <Tile frontTitle="Engineering Team Lead" backTitle="Started as a junior level developer and quickly learned and built upon the patterns that existed in the codebase. Soon I was ablke to teach other juniors and was promoted to a lead. You know you know a topic well if you can teach others" />
-      <Tile frontTitle="Eagle Scout" backTitle="I follow through with anything I set my mind to even from an early age. I'm loyal and see things through to the end." />
-      <Tile frontTitle="Part 107 Licensed" backTitle="I am commericially certified to fly up to 49 lbs drones. The drones that I fly are custom built from my own designs. I solder the electronics, assemble the frames, and flash/configure the firmware." />
+    <div className="flex justify-between w-auto">
+      <div className="flex flex-col">
+        <H1>Andrew M. Patterson</H1>
+        <H2>Software Engineer, UAS Pilot, Tinkerer</H2>
+        <P>There is no such thing as a problem, only a challenge waiting to be solved.</P>
+      </div>
+      <Image src="/images/archery.PNG" alt="archery" width={200} height={200} style={{ borderRadius: "50px" }} />
     </div>
     <div className="md:grid md:grid-cols-5 flex flex-col">
       <Timeline data={data} className="col-span-3" />
@@ -105,7 +103,16 @@ export default async function TLDR() {
         </P>
       </div>
     </div>
-    <ActivityCalendar colorScheme="light" theme={{ light: ['#39d353', '#0e4429'] }} data={activityData} />
+    <H3>Accomplishments</H3>
+    <div className="mosaic">
+      <Tile frontTitle="Self Taught Developer" backTitle="Used tech and played videogames for the majority of my life. I love to learn and programming combined both these passions" />
+      <Tile frontTitle="Engineering Team Lead" backTitle="Started as a junior level developer and quickly learned and built upon the patterns that existed in the codebase. Soon I was ablke to teach other juniors and was promoted to a lead. You know you know a topic well if you can teach others" />
+      <Tile frontTitle="Eagle Scout" backTitle="I follow through with anything I set my mind to even from an early age. I'm loyal and see things through to the end." />
+      <Tile frontTitle="Part 107 Licensed" backTitle="I am commericially certified to fly up to 49 lbs drones. The drones that I fly are custom built from my own designs. I solder the electronics, assemble the frames, and flash/configure the firmware." />
+    </div>
+    <div className="mx-auto my-4">
+      <ActivityCalendar colorScheme="light" theme={{ light: ['#39d353', '#0e4429'] }} data={activityData} />
+    </div>
     <div className="flex flex-col gap-2">
       <P>
         With over eight years of experience in the software engineering landscape, I bring a deep-seated expertise in crafting sophisticated solutions that drive innovation and efficiency. My journey through the world of web technologies and computer science has equipped me with a broad and versatile skill set, allowing me to tackle a diverse range of challenges and deliver impactful results.

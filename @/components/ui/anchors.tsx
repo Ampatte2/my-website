@@ -10,16 +10,16 @@ const mailToSpaceSeperator = "%0D%0A"
 
 const MailToAnchor = React.forwardRef<
   HTMLAnchorElement,
-  React.ComponentPropsWithoutRef<"nav"> & { subject: string, body: string[] }
->(({ ...props }, ref) => <a className={cn(props.className)} aria-label="Contact Email Mailto Link" href={`mailto:dog@dog.com?subject=${props.subject}&body=${props.body.join(mailToSpaceSeperator + mailToSpaceSeperator)}`} ref={ref}>{props.children}</a>)
+  React.ComponentPropsWithoutRef<"nav"> & { subject: string, body: string[], icon?: React.ReactElement, title: string }
+>(({ ...props }, ref) => <a className={cn(props.className)} aria-label="Contact Email Mailto Link" href={`mailto:dog@dog.com?subject=${props.subject}&body=${props.body.join(mailToSpaceSeperator + mailToSpaceSeperator)}`} ref={ref}>{props.icon}<h4>{props.title}</h4></a>)
 MailToAnchor.displayName = "MailToAnchor"
 
-const AnchorIcon = React.forwardRef<
+const Anchor = React.forwardRef<
   HTMLAnchorElement,
-  React.ComponentPropsWithoutRef<"nav"> & { href: Url, icon: React.ReactElement, title: string }
->(({ ...props }, ref) => <Link href={props.href}><a className={cn(props.className, 'flex flex-row')} ref={ref}>{props.icon}<h4>{props.title}</h4></a></Link>)
+  React.ComponentPropsWithoutRef<"nav"> & { href: Url, icon?: React.ReactElement, title: string }
+>(({ ...props }, ref) => <Link target="_blank" href={props.href} className={cn(props.className, 'flex flex-row')} ref={ref}>{props.icon}<h4>{props.title}</h4></Link>)
 
 export {
   MailToAnchor,
-  AnchorIcon
+  Anchor
 }
