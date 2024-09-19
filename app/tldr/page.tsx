@@ -1,17 +1,16 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import Image from "next/image";
-import { parse, differenceInCalendarYears, differenceInCalendarMonths } from 'date-fns';
-import { fr } from 'date-fns/locale';
-import ActivityCalendar, { Activity } from "react-activity-calendar";
-import { Button } from "@/components/ui/button";
-import { Column } from "@/components/ui/flex";
-import React, { PropsWithChildren } from 'react';
-import { ApiResponse, retrieveContributionData } from "../../util/api/github-contributions";
-import { count } from "console";
 import { DownloadResumeButton } from "@/components/ui/downloadResume";
-import { H1, H2, H3, H4, OL, P } from "@/components/ui/elements";
+import { H1, H2, H3, H4, P } from "@/components/ui/elements";
+import { Column } from "@/components/ui/flex";
 import { cn } from "@/lib/utils";
-import { Tooltip } from "@/components/ui/tooltip"
+import { differenceInCalendarMonths } from 'date-fns';
+import Image, { StaticImageData } from "next/image";
+import ActivityCalendar, { Activity } from "react-activity-calendar";
+import battleStationImg from "../../public/images/battle_station.png";
+import computerTeamImg from "../../public/images/computer_team.jpg";
+import eagleScoutImg from "../../public/images/eagle_scout_camping.webp";
+import openDroneImg from "../../public/images/open_drone.png";
+import { retrieveContributionData } from "../../util/api/github-contributions";
+import { ReactElement } from "react";
 
 const formatDate = Intl.DateTimeFormat([], { dateStyle: "medium" });
 interface TimelineData {
@@ -36,12 +35,13 @@ const formatEmployedLength = (start: Date, end: Date) => {
 }
 
 const Timeline = (props: TimelineProps) => (
-  <div className={cn("flex flex-col", props.className)}>
+  <div className={cn("flex flex-col timeline", props.className)}>
+    <H3 className="mb-4">Timeline</H3>
     {props.data.map((item, index) => (
       <div key={index} className="timeline-item">
         <div className="timeline-circle"></div>
         <div className="timeline-content">
-          <H2>{item.title}</H2>
+          <H2 className="leading-7">{item.title}</H2>
           <H4 className="mt-2">{formatDate.format(item.startDate)} to {formatDate.format(item.endDate)}</H4>
           <H4>{formatEmployedLength(item.startDate, item.endDate)}</H4>
           <P className="mt-2">{item.content}</P>
@@ -51,11 +51,17 @@ const Timeline = (props: TimelineProps) => (
   </div>
 );
 
+const TileContainer = (props: { left: ReactElement, right: ReactElement }) => <div className="mosaic">
+  {props.left}
+  {props.right}
+</div>
 
-const Tile = (props: { frontTitle: string, backTitle: string }) => <div className="mosaic-tile-container">
-  <p className="front-face">{props.frontTitle}</p>
-  <p className="back-face">{props.backTitle}</p>
-  <div className="mosaic-tile" />
+const Tile = (props: { image: StaticImageData, frontTitle: string, backTitle: string }) => <div className="flex flex-col text-center w-full">
+  <H3 className="mb-4">{props.frontTitle}</H3>
+  <div className="mosaic-tile-container">
+    <p className="back-face text-xl font-bold text-white text-shadow-sm shadow-black">{props.backTitle}</p>
+    <div className="mosaic-tile" style={{ backgroundImage: `url(${props.image.src})` }} />
+  </div>
 </div>;
 
 const data = [
@@ -76,58 +82,87 @@ export default async function TLDR() {
     prev.concat(
       curr.contributionDays.map(_ => ({ date: _.date, count: _.contributionCount, level: _.contributionCount / highestActivity * 4 }))
     ), [])
-
-  return <Column classes="gap-1">
-    <div className="flex justify-between w-auto">
+  // There is no such thing as a problem, only a challenge waiting to be solved.</P>
+  return <Column classes="gap-16">
+    <div className="flex gap-4 mx-auto">
+      <Image
+        src="/images/archery.PNG"
+        alt="archery"
+        width={100}
+        height={100}
+        style={{ borderRadius: "24px", border: "1px solid black", filter: "drop-shadow(1px 2px 1px #D3D3D3)" }}
+      />
       <div className="flex flex-col">
-        <H1>Andrew M. Patterson</H1>
-        <H2>Software Engineer, UAS Pilot, Tinkerer</H2>
-        <P>There is no such thing as a problem, only a challenge waiting to be solved.</P>
-      </div>
-      <Image src="/images/archery.PNG" alt="archery" width={200} height={200} style={{ borderRadius: "50px" }} />
-    </div>
-    <div className="md:grid md:grid-cols-5 flex flex-col">
-      <Timeline data={data} className="col-span-3" />
-      <div className="col-span-2 flex flex-col gap-4">
-        <H3>Professional History</H3>
-        <P>
-          After getting straight A's and pre-med requirements to become a Psychiatrist I realized that wasn't for me.
-          I took a few years and taught myself how to program, and fell in love with the challenges.
-          In order to get my foot in the door I took a junior position at a trading company startup.
-        </P>
-        <P>
-          Quickly I rose to be one of the best performing juniors, but the company did not secure additional funding.
-          My next opportunity arose at a Food Service startup within a year I was offered a promotion and a raise, and when the company began to expand I was promoted to Team Lead.
-          I was in charge of managing the "Core" Epic, which encompased a variety of projects and routine maintenance on the site.
-          Before long I was spear-heading month long features managing a team of five.
-        </P>
+        <H1 className="ml-2 my-auto">Andrew M. Patterson</H1>
+        <H2 className="col-start-2">Software Engineer, UAS Pilot, Tinkerer</H2>
       </div>
     </div>
-    <H3>Accomplishments</H3>
-    <div className="mosaic">
-      <Tile frontTitle="Self Taught Developer" backTitle="Used tech and played videogames for the majority of my life. I love to learn and programming combined both these passions" />
-      <Tile frontTitle="Engineering Team Lead" backTitle="Started as a junior level developer and quickly learned and built upon the patterns that existed in the codebase. Soon I was ablke to teach other juniors and was promoted to a lead. You know you know a topic well if you can teach others" />
-      <Tile frontTitle="Eagle Scout" backTitle="I follow through with anything I set my mind to even from an early age. I'm loyal and see things through to the end." />
-      <Tile frontTitle="Part 107 Licensed" backTitle="I am commericially certified to fly up to 49 lbs drones. The drones that I fly are custom built from my own designs. I solder the electronics, assemble the frames, and flash/configure the firmware." />
+    <div className="flex flex-col">
+      <H2 className="mb-4 mx-auto">Professional History</H2>
+      <div className="md:grid md:grid-cols-5 flex flex-col">
+        <Timeline data={data} className="col-span-3" />
+        <div className="col-span-2 flex flex-col gap-4">
+          <H3>Summary</H3>
+          <P>
+            After getting straight A's and pre-med requirements to become a Psychiatrist I realized that wasn't for me.
+            I took a few years and taught myself how to program, and fell in love with the challenge.
+          </P>
+          <P>
+            In order to get my foot in the door I took a junior position at a trading company startup.
+            Quickly I rose to be one of the best performing juniors.
+          </P>
+          <P>
+            My next opportunity was a Food Service startup where I started by porting over old javascript code to typescript. I picked up on the company's patterns and with my newly strengthened typescript skills I found myself in a teacher/mentor role, which I loved.
+          </P>
+          <P>
+            I took a position working for a bond marketing platform within a year I was offered a promotion, and when the company began to expand I was promoted to Team Lead.
+            I was in charge of managing the "Core" Epic, which encompased a variety of projects and routine maintenance on the site.
+            Before long I was spear-heading month long features managing a team of five.
+          </P>
+        </div>
+      </div>
     </div>
-    <div className="mx-auto my-4">
-      <ActivityCalendar colorScheme="light" theme={{ light: ['#39d353', '#0e4429'] }} data={activityData} />
+    <TileContainer
+      left={<Tile image={computerTeamImg} frontTitle="Team Lead" backTitle="As a junior level developer I quickly learned and built upon the patterns that existed in the codebase. Within a year I was knowledgable enough to teach other juniors and was promoted to team lead." />}
+      right={<Tile image={battleStationImg} frontTitle="Self Taught Developer" backTitle="I love to learn and the fast paced creative nature of software development has become a passion. I've even augmented" />}
+    />
+    <div className="flex flex-col gap-4">
+      <H2 className="mb-4 mx-auto">Accomplishments</H2>
+      <div className="flex flex-col gap-2">
+        <P>
+          With over eight years of experience in the software engineering landscape, I bring a deep-seated expertise in crafting sophisticated solutions that drive innovation and efficiency. My journey through the world of web technologies and computer science has equipped me with a broad and versatile skill set, allowing me to tackle a diverse range of challenges and deliver impactful results.
+        </P>
+        <P>
+          Having navigated various facets of the software development lifecycle, I’ve honed my ability to design and implement scalable systems that meet the ever-evolving demands of today's digital environment. My proficiency spans a spectrum of web technologies, and I am adept at leveraging these tools to build robust, high-performance applications that stand out in their functionality and user experience.
+        </P>
+        <P>
+          My approach combines a rigorous understanding of core computer science principles with a hands-on, problem-solving mindset. This blend of theoretical knowledge and practical application empowers me to not only address complex technical issues but also to anticipate and adapt to emerging trends and technologies.
+        </P>
+        <P>
+          Whether collaborating with cross-functional teams or leading projects independently, I am committed to pushing the boundaries of what's possible and delivering solutions that drive success. My career has been defined by a relentless pursuit of excellence and a passion for innovation, and I am eager to bring this dedication to new and exciting opportunities.
+        </P>
+      </div>
+      <TileContainer
+        left={<Tile image={eagleScoutImg} frontTitle="Eagle Scout" backTitle="Always assuming the leadership role when required, and following through on anything I set my sights on." />}
+        right={<Tile image={openDroneImg} frontTitle="UAS Pilot Part 107 Licensed" backTitle="I am commercially licensed to fly drones. They are custom built from my own designs and I solder the electronics, assemble the frames, and flash/configure the firmware." />}
+      />
+      <div className="mosaic">
+      </div>
     </div>
-    <div className="flex flex-col gap-2">
-      <P>
-        With over eight years of experience in the software engineering landscape, I bring a deep-seated expertise in crafting sophisticated solutions that drive innovation and efficiency. My journey through the world of web technologies and computer science has equipped me with a broad and versatile skill set, allowing me to tackle a diverse range of challenges and deliver impactful results.
-      </P>
-      <P>
-        Having navigated various facets of the software development lifecycle, I’ve honed my ability to design and implement scalable systems that meet the ever-evolving demands of today's digital environment. My proficiency spans a spectrum of web technologies, and I am adept at leveraging these tools to build robust, high-performance applications that stand out in their functionality and user experience.
-      </P>
-      <P>
-        My approach combines a rigorous understanding of core computer science principles with a hands-on, problem-solving mindset. This blend of theoretical knowledge and practical application empowers me to not only address complex technical issues but also to anticipate and adapt to emerging trends and technologies.
-      </P>
-      <P>
-        Whether collaborating with cross-functional teams or leading projects independently, I am committed to pushing the boundaries of what's possible and delivering solutions that drive success. My career has been defined by a relentless pursuit of excellence and a passion for innovation, and I am eager to bring this dedication to new and exciting opportunities.
-      </P>
+    <div className="flex flex-col">
+      <H2 className="mb-4 mx-auto">Github Stats</H2>
+      <div className="mx-auto my-4">
+        <ActivityCalendar
+          colorScheme="light"
+          theme={{ light: ["#ccffcc", "#80ff80", "#4dff4d", "#1aff1a", "#00cc00"] }}
+          data={activityData}
+          style={{ fill: "#e6ffe6" }}
+          blockMargin={8}
+          blockSize={16}
+          blockRadius={99}
+        />
+      </div>
     </div>
     <DownloadResumeButton />
-    <Button>Full Site</Button>
   </Column>
 }

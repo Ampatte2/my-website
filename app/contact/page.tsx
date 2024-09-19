@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Anchor, MailToAnchor } from '@/components/ui/anchors';
 import { DatePicker } from '@/components/ui/date-picker';
 import { H1, H3 } from '@/components/ui/elements';
@@ -9,7 +10,8 @@ import { LinkedinIcon, Mail, Phone, TwitchIcon, YoutubeIcon } from 'lucide-react
 export default function Contact() {
   return <div className="flex flex-col justify-center items-center gap-5 px-16">
     <H1 className='w-fit mx-auto text-xl'>Andrew M Patterson</H1>
-    <H3 className='w-fit mx-auto text-xl mb-16'>Contact and Socials</H3>
+    <H3 className='w-fit mx-auto text-xl'>Contact and Socials</H3>
+    <Image src="/images/campfire_me.PNG" alt="archery" className="mb-16 rounded-xl" width={200} height={200} />
     <div className="grid grid-cols-2 grid-rows-2 gap-8 w-fit">
       <Anchor icon={<Phone />} href='tel:623-692-6992' title='623-692-6992' className='flex flex-row gap-x-2' />
       <Row classes='gap-x-2'>

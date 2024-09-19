@@ -38,3 +38,5 @@ next-env.d.ts
 
 # image assets
 /public/images/
+/public/movies/
+/public/svgs/
