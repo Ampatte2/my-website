@@ -36,6 +36,7 @@ query($userName:String!) {
   }
 }
 `
+
 export async function retrieveContributionData(userName: string): Promise<ApiResponse> {
   const variables = `
   {
@@ -49,7 +50,7 @@ export async function retrieveContributionData(userName: string): Promise<ApiRes
   const res = await fetch('https://api.github.com/graphql', {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+      Authorization: `bearer ${process.env.GITHUB_TOKEN}`,
     },
     body: JSON.stringify(body)
   })

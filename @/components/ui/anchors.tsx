@@ -17,7 +17,7 @@ MailToAnchor.displayName = "MailToAnchor"
 const Anchor = React.forwardRef<
   HTMLAnchorElement,
   React.ComponentPropsWithoutRef<"nav"> & { href: Url, icon?: React.ReactElement, title: string }
->(({ ...props }, ref) => <Link target="_blank" href={props.href} className={cn(props.className, 'flex flex-row')} ref={ref}>{props.icon}<h4>{props.title}</h4></Link>)
+>(({ ...props }, ref) => <Link target="_blank" href={props.href} className={cn(props.className, 'flex flex-row', "text-slate-700 hover:underline hover:text-slate-300")} ref={ref}>{props.icon}<h4>{props.title}</h4></Link>)
 
 export {
   MailToAnchor,

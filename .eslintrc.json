@@ -1,5 +1,8 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": ["next/core-web-vitals", "next/typescript"],
   "eslint": "recommended",
-  "plugin": "react/recommended"
+  "plugins": ["react/recommended", "@stylistic"],
+  "rules": {
+    "@stylistic/indent": ["error", 2]
+  }
 }
