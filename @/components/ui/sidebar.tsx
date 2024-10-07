@@ -4,13 +4,13 @@ import { cn } from "@/lib/utils";
 import { type ClassValue } from "clsx"
 import {isInViewportListener} from "../../../util/isInViewPort";
 
-type SideBarBaseProps = { icon: ReactElement };
+type SideBarBaseProps = { icon: ReactElement, bottomOffset?: number };
 type SideBarProps = { cap?: ReactElement } & SideBarBaseProps;
 export const SidebarBase = (props: SideBarProps) =>  {
   const [isInView, setIsInView] = useState(false);
   return <div 
     className={cn("sidebar", isInView ? "is-in-view" : "")}
-    ref={(node) => isInViewportListener(node, () => setIsInView(true), () => setIsInView(false), 300)}
+    ref={(node) => isInViewportListener(node, () => setIsInView(true), () => setIsInView(false), props.bottomOffset ?? 400)}
 >
     {props.cap}
     {props.icon} 

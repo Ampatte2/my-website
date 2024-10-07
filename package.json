@@ -32,7 +32,7 @@
     "postcss-import": "^16.1.0",
     "postcss-nesting": "^13.0.0",
     "react": "^18",
-    "react-activity-calendar": "^2.4.0",
+    "react-activity-calendar": "^2.5.3",
     "react-day-picker": "^8.10.0",
     "react-dom": "^18",
     "stylelint": "^16.9.0",

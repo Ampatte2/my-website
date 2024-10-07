@@ -1,85 +1,27 @@
 import { Anchor } from "@/components/ui/anchors";
 import { DownloadResumeButton } from "@/components/ui/downloadResume";
 import { H1, H2, H3, H4, P } from "@/components/ui/elements";
-import { SidebarBase, SidebarTop, SidebarMain, SidebarBottom } from "@/components/ui/sidebar";
 import { Column } from "@/components/ui/flex";
+import { Tile } from "@/components/ui/mosaic";
+import { SidebarBottom, SidebarMain, SidebarTop } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 import { differenceInCalendarMonths } from 'date-fns';
-import Image, { StaticImageData } from "next/image";
-import { JSXElementConstructor, PropsWithChildren, ReactElement, ReactNode, useRef, useState } from "react";
-import ActivityCalendar, { Activity, Props } from "react-activity-calendar";
+import Image from "next/image";
+import { PropsWithChildren } from "react";
 import battleStationImg from "../../public/images/battle_station.png";
 import computerTeamImg from "../../public/images/computer_team.jpg";
 import eagleScoutImg from "../../public/images/eagle_scout_camping.webp";
 import openDroneImg from "../../public/images/open_drone.png";
-import Drone from "../../public/svgs/drone.svg";
 import Printer from "../../public/svgs/3d-printer.svg";
-import Toolbox from "../../public/svgs/toolbox.svg";
-import Github from "../../public/svgs/github.svg";
-import EagleScout from "../../public/svgs/eagle-scout.svg";
 import DesktopComp from "../../public/svgs/desktop-computer.svg";
-import Plasmic from "../../public/svgs/plasmic.svg";
-import BetaFlight from "../../public/svgs/betaflight.svg";
-import Shadcn from "../../public/images/shadcn.png";
-import Fpts from "../../public/images/fp-ts-logo.png";
-import Koa from "../../public/svgs/koa.svg";
-import Lua from "../../public/svgs/lua.svg";
-import Mac from "../../public/svgs/mac.svg";
-import Bash from "../../public/svgs/bash.svg";
-import Gulp from "../../public/svgs/gulp.svg";
-import Sass from "../../public/svgs/sass.svg";
-import Scala from "../../public/svgs/scala.svg";
-import Tmux from "../../public/svgs/tmux.svg";
-import ReactSvg from "../../public/svgs/react.svg";
-import Css from "../../public/svgs/css-3.svg";
-import Sql from "../../public/svgs/sql-file-format-symbol.svg";
-import Typescript from "../../public/svgs/typescript-official.svg";
-import Nodejs from "../../public/svgs/nodejs-icon.svg";
-import Javascript from "../../public/svgs/javascript.svg";
-import Angular from "../../public/svgs/angularjs.svg";
-import Tailwind from "../../public/svgs/tailwind.svg";
-import Nginx from "../../public/svgs/nginx.svg";
-import Webpack from "../../public/svgs/webpack.svg";
-import Mongodb from "../../public/svgs/mongodb.svg";
-import Express from "../../public/svgs/express.svg";
-import Html from "../../public/svgs/html-5.svg";
-import Neovim from "../../public/svgs/neovim.svg";
-import Nextjs from "../../public/svgs/nextjs.svg";
-import { retrieveContributionData } from "../../util/api/github-contributions";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@radix-ui/react-tooltip";
+import Drone from "../../public/svgs/drone.svg";
+import EagleScout from "../../public/svgs/eagle-scout.svg";
+import Github from "../../public/svgs/github.svg";
+import Toolbox from "../../public/svgs/toolbox.svg";
+import { Skills } from "@/components/ui/skills";
+import { GithubActivityCalendar } from "@/components/ui/github-activity-calendar";
+import { ClassValue } from "clsx";
 
-type WithTooltipProps = {content?: ReactNode, title: string }
-
-const WithTooltip = (props: PropsWithChildren<WithTooltipProps>) => <TooltipProvider>
-  <Tooltip >
-    <TooltipTrigger>
-      {props.children}
-    </TooltipTrigger>
-    <TooltipContent>
-      <div className="flex flex-col text-center w-80">
-        <H4>{props.title}</H4>
-        {props.content}
-      </div>
-    </TooltipContent>
-  </Tooltip>
-</TooltipProvider>;
-
-const SvgWithTooltip = (props: {svg: JSXElementConstructor<object>} & WithTooltipProps) => 
-  <WithTooltip
-    title={props.title}
-    content={props.content}
-  >
-    <props.svg />
-  </WithTooltip>
-
-
-const ImgWithTooltip = (props: {src: StaticImageData} & WithTooltipProps) => 
-  <WithTooltip
-    title={props.title}
-    content={props.content}
-  >
-    <Image src={props.src} alt={props.title} />
-  </WithTooltip>
 const formatDate = Intl.DateTimeFormat([], { dateStyle: "medium" });
 
 interface TimelineData {
@@ -91,7 +33,7 @@ interface TimelineData {
 
 interface TimelineProps {
   data: TimelineData[];
-  className?: string;
+  className?: ClassValue;
 }
 
 const formatEmployedLength = (start: Date, end: Date) => {
@@ -120,15 +62,7 @@ const Timeline = (props: TimelineProps) => (
   </div>
 );
 
-const SectionWithSidebar = (props: PropsWithChildren<{orientation: "left" | "right"}>) => <div className={cn("sidebar-section", props.orientation)}>{props.children}</div>
-
-const Tile = (props: { image: StaticImageData, frontTitle: string, backTitle: string }) => <div className="flex flex-col text-center">
-  <H3 className="mb-4">{props.frontTitle}</H3>
-  <div className="mosaic-tile-container">
-    <p className="back-face text-xl font-bold text-white text-shadow-sm shadow-black">{props.backTitle}</p>
-    <div className="mosaic-tile" style={{ backgroundImage: `url(${props.image.src})` }} />
-  </div>
-</div>;
+const SectionWithSidebar = (props: PropsWithChildren<{orientation: "left" | "right", classes?: ClassValue}>) => <div className={cn("sidebar-section", props.orientation, props.classes)}>{props.children}</div>
 
 const data = [
   { startDate: new Date('2018 01 01'), endDate: new Date('2019 06 01'), title: 'Procleos Labs', content: 'Trading application that was focused on individual investors' },
@@ -136,19 +70,7 @@ const data = [
   { startDate: new Date('2021 05 '), endDate: new Date(), title: 'Bondlink', content: 'Front end and back end for municipalities to manage and disseminate information about Bond Sales and their communities' },
 ];
 
-export default async function TLDR() {
-  // const res = await retrieveContributionData("Ampatte2");
-  
-  // const highestActivity = res.data.user.contributionsCollection.contributionCalendar.weeks.reduce((prevCount, curr) => {
-  //  const currCount = curr.contributionDays.reduce((count, currDay) => currDay.contributionCount > count ? currDay.contributionCount : count, 0)
-  //  return currCount > prevCount ? currCount : prevCount;
-  // }, 0)
-
-  //const activityData = res.data.user.contributionsCollection.contributionCalendar.weeks.reduce<Array<Activity>>((prev, curr) =>
-  //  prev.concat(
-  //    curr.contributionDays.map(_ => ({ date: _.date, count: _.contributionCount, level: _.contributionCount / highestActivity * 4 }))
-  //  ), [])
-
+export default function TLDR() {
   return <Column classes="flex flex-col gap-20">
     <div className="flex gap-4 mx-auto px-10">
       <Image
@@ -170,7 +92,7 @@ export default async function TLDR() {
         <SidebarMain classes="gap-4">
           <div className="flex flex-col">
             <H2 className="mb-4 mx-auto">Professional History</H2>
-            <div className="md:grid md:grid-cols-5 flex flex-col">
+            <div className="md:grid md:grid-cols-5 gap-4 flex flex-col">
               <Timeline data={data} className="col-span-3" />
               <div className="col-span-2 flex flex-col gap-4">
                 <H3>Summary</H3>
@@ -206,120 +128,124 @@ export default async function TLDR() {
         <SidebarMain>
           <div className="flex flex-col">
             <H2 className="mb-4 mx-auto">Github Stats</H2>
-            <div className="mx-auto my-4">
-            {/*
-              <ActivityCalendar
-                colorScheme="light"
-                theme={{ light: ["#ccffcc", "#80ff80", "#4dff4d", "#1aff1a", "#00cc00"] }}
-                data={activityData}
-                style={{ fill: "#e6ffe6" }}
-                blockMargin={8}
-                blockSize={16}
-                blockRadius={99}
-              />
-              */}                          
+            <div className="flex mx-auto my-4 github-calendar">
+              <GithubActivityCalendar />
             </div>
           </div>
-          <P>
-            Having navigated various facets of the software development lifecycle, I’ve honed my ability to design and implement scalable systems that meet the ever-evolving demands of today's digital environment. My proficiency spans a spectrum of web technologies, and I am adept at leveraging these tools to build robust, high-performance applications that stand out in their functionality and user experience.
-          </P>
-          <P>
-            With over eight years of experience in the software engineering landscape, I bring a deep-seated expertise in crafting sophisticated solutions that drive innovation and efficiency. My journey through the world of web technologies and computer science has equipped me with a broad and versatile skill set, allowing me to tackle a diverse range of challenges and deliver impactful results.
-          </P>
+          <div className="flex flex-col gap-4">
+            <P>
+              Having navigated various facets of the software development lifecycle, I’ve honed my ability to design and implement scalable systems that meet the ever-evolving demands of today's digital environment. My proficiency spans a spectrum of web technologies, and I am adept at leveraging these tools to build robust, high-performance applications that stand out in their functionality and user experience.
+            </P>
+            <P>
+              With over eight years of experience in the software engineering landscape, I bring a deep-seated expertise in crafting sophisticated solutions that drive innovation and efficiency. My journey through the world of web technologies and computer science has equipped me with a broad and versatile skill set, allowing me to tackle a diverse range of challenges and deliver impactful results.
+            </P>
+          </div>
         </SidebarMain>
       </SectionWithSidebar>
     </div>
+    <H2 className="mx-auto">Technologies Ive Used</H2>
+    <Skills />
     <div>
       <SectionWithSidebar orientation="right">
         <SidebarMain>
-          <Tile image={eagleScoutImg} frontTitle="Eagle Scout" backTitle="Always assuming the leadership role when required, and following through on anything I set my sights on." />
-          <Tile image={computerTeamImg} frontTitle="Team Lead" backTitle="As a junior level developer I quickly learned and built upon the patterns that existed in the codebase. Within a year I was knowledgable enough to teach other juniors and was promoted to team lead." />
+          <H2 className="mb-4 mx-auto">Leadership</H2>
+          <div className="flex gap-20">
+            <div className="flex flex-col gap-4">
+              <H3 className="mx-auto">Team Lead</H3>
+              <P>As a junior level developer I quickly learned and built upon the patterns that existed in the codebase. Within a year I was knowledgable enough to teach other juniors and was promoted to team lead.</P>
+              <P>I love to learn and the fast paced creative nature of software development has become a passion. I've even augmented</P>
+            </div>
+            <Tile image={computerTeamImg} classes="my-auto" />
+          </div>
+          <div className="flex gap-20">
+            <Tile image={eagleScoutImg} classes="my-auto"/>
+            <div className="flex flex-col gap-4">
+              <H3 className="mx-auto">Eagle Scout</H3>
+              <P>Always assuming the leadership role when required, and following through on anything I set my sights on.</P>
+              <P>I am an Eagle Scout and earned that tile by leading my Troop through rebuilding a historic building at Pioneer Living History Muesem in Northern Phoenix.</P>
+            </div>
+          </div>
         </SidebarMain>
         <SidebarTop icon={<EagleScout />} />
       </SectionWithSidebar>
       <SectionWithSidebar orientation="right">
         <SidebarMain>
-          <Tile image={openDroneImg} frontTitle="UAS Pilot Part 107 Licensed" backTitle="I am commercially licensed to fly drones. They are custom built from my own designs and I solder the electronics, assemble the frames, and flash/configure the firmware." />
+          <div className="flex gap-20">
+            <div className="flex flex-col gap-4">
+              <H2 className="mx-auto">UAS Pilot Part 107 Licensed</H2>
+              <P>I am commercially licensed to fly drones. They are custom built from my own designs and I solder the electronics, assemble the frames, and flash/configure the firmware.</P>
+              <P>I got into FPV drones because they are one of the coolest feelings of freedom out there, unlimited movement at a moments notice with you in the drivers seat</P>
+              <P>The moments that you get to fly are amazing, but the real meat and potatoes comes from crashing and building them. The <strong>best</strong> problems come from working on embedded systems. Having the physical component cost of "just trying it out" forces you to become creative and try different solutions</P>
+              <P>Drones programmed with Betaflight with freestyle performance, I'm running ImmersionRC with HDO2.1 goggles, ELRS Radiomaster Boxer</P>
+            </div>
+            <Tile image={openDroneImg} classes="my-auto"/>
+          </div>
         </SidebarMain>
         <SidebarBottom icon={<Drone />} />
       </SectionWithSidebar>
     </div>
     <div>
       <SectionWithSidebar orientation="left">
-        <SidebarTop icon={<Toolbox />}  />
+        <SidebarTop icon={<Toolbox />}  bottomOffset={0}/>
         <SidebarMain>
-          <div className="flex">
-            <div className="flex flex-col gap-4 px-10">
-              <H2>My Tools</H2>
+          <div className="flex pb-10">
+            <div className="flex flex-col gap-8">
+              <H2 className="mx-auto">Tinkering with my Tools</H2>
+              <div className="flex justify-around">
+                  <Image src="/svgs/Vimlogo.svg" alt="VimLogo" width={100} height={100} />
+                  <Image src="/svgs/arch-linux.svg" alt="Operating System" width={100} height={100}/>
+                  <Image src="/images/moonlander_logo.webp" alt="Moonlander" width={100} height={100} />
+              </div>
               <div className="flex flex-col gap-4">
-                <H3>Editor</H3>
-                <div className="inline">
-                  <Image src="/svgs/Vimlogo.svg" alt="VimLogo" width={100} height={100} className="float-left mr-4 mb-4" />
+                  <H3>My Editor</H3>
                   <P>As a junior I would pair with this one individual who used Emacs, and it astounded me the ease and level of control they had over their editor. Navigating files, moving around inside files, text manipulation, and infinite customization. I realized that they were able to iterate significantly faster than I was using vanilla VSCode.</P>
-                  <P className="mt-4">I spent the next 6 months learning a new keyboard and Vim (Neovim flavor), and it was well worth every second. The choice of Vim has been great, my editor comes standard on every machine, and now I can be the one to impress the juniors.</P>
-                </div>
-                <span className="flex text-lg">
+                  <P>I spent the next 6 months learning a new keyboard and Vim (Neovim flavor), and it was well worth every second. The choice of Vim has been great, my editor comes standard on every machine, and now I can be the one to impress the juniors.</P>
+                <span className="flex text-xl">
                   <H4>Check out my</H4>
                   <Anchor href="https://github.com/Ampatte2/dot_files/tree/main/linux-config/nvim" title="Nvim Dot Files" className="ml-2" />
                 </span>
               </div>
               <div className="flex flex-col gap-4">
-                <H3>Why stop at an Editor?</H3>
-                <div className="inline">
-                  <Image src="/images/moonlander_logo.webp" alt="Moonlander" width={100} height={100} className="float-left mr-4 mb-4" />
-                  <P>Another coworker showed me the customizations that QMK firmware could provide, and the beauty that is "Layers". Since I was already shaking up my developer experience I figured why not make it exactly what I want.</P>
+                  <H3>Operating System</H3>
+                <div className="flex flex-col gap-4">
+                  <div className="inline">
+                    <P>I've also endured the pain of not realizing that I needed to update the location of vmlinuz in the config, because if you don't your very specific install location of BOOT/boot/bootx86.efi is not going to be respected. Hit that "sudo pacman -Syu", restart, and get stuck at the GRUB bootloader... then dejectedly breaking out the ER tools (Arch Linux ISO) and start seeing where I went wrong.</P>
+                    <P>Definitely was a skill issue though, that continues through this day</P>
+                  </div>
+                  <P>There is way too much bloatware in modern OS's that I just don't need and it's noise. Arch linux is only what I want to install, and for that privelage I've spent hours configuring the system</P>
+                  <P>It's been one of my favorite projects, it taught me that at the end of the day regardless of what you're working on in software it is all just: <strong>Data Structures, Algorithms, and Directories</strong></P>
                 </div>
               </div>
-              <div className="flex flex-col gap-4">
-                <H3>Operating System</H3>
-                <Image src="/svgs/arch-linux.svg" alt="Operating System" width={100} height={100} />
-                <P>I know the pain "-Syu" bricking my machine and having to break out the ISO to perform open heart surgery. Also, the pain of realizing it was entirely my fault.</P>
-                <Anchor href="https://configure.zsa.io/moonlander/layouts/Rgmyl/5Dw66/0" title="You Only Need 38 - Keyboard Layout" />
+              <div className="flex gap-20">
+                <div className="flex flex-col gap-4">
+                  <H3>Why stop at an Editor?</H3>
+                  <P>Another coworker showed me the customizations that QMK firmware could provide, and the beauty that is "Layers". Since I was already shaking up my developer experience I figured why not make it exactly what I want.</P>
+                  <P>Then it kind of spiraled from there, I started expirementing with different seats, different desks, sitting on the ground, sitting on a ball chair, and all gave me issues with long (10+ hours) of coding.</P>
+                  <P>The current iteration that's been relatively stable is a zero gravity recliner, split keyboard, and a PVC frame for the monitor to keep it at a good distance above my head.</P>
+                  <P>Next iteration will remove the PVC with a better material, and a better way to get in and out.</P>
+                  <span className="flex text-xl">
+                    <H4>Check out my Keyboard Layout</H4>
+                    <Anchor href="https://configure.zsa.io/moonlander/layouts/Rgmyl/5Dw66/0" title="You Only Need 38" className="ml-2" />
+                  </span>
+                </div>
+                <Tile image={battleStationImg} />
               </div>
             </div>
-            <Tile image={battleStationImg} frontTitle="Self Taught Developer" backTitle="I love to learn and the fast paced creative nature of software development has become a passion. I've even augmented" />
           </div>
         </SidebarMain>
       </SectionWithSidebar >
-      <SectionWithSidebar orientation="left">
-        <SidebarBottom icon={<Printer />} />
+      <SectionWithSidebar orientation="left" >
+        <SidebarBottom icon={<Printer />} bottomOffset={0} />
         <SidebarMain>
-          <div>Printer Content</div>
+          <H2 className="mx-auto">Hobbies</H2>
         </SidebarMain>
       </SectionWithSidebar>
     </div>
-    <div className="px-40">
-      <H2>Technologies for Nerds</H2>
-      <SvgWithTooltip title="Plasmic" content="Built a CMS for Marketing to manage online prescence without involving Engineering" svg={Plasmic} />
-      <SvgWithTooltip title="BetaFlight" content="Configuration via command line args and lua" svg={BetaFlight} />
-      <SvgWithTooltip title="NodeJs" svg={Nodejs} />
-      <SvgWithTooltip title="Koa" content="Utilizes context of the overall program state with plugins" svg={Koa} />
-      <SvgWithTooltip title="ExpressJs" content="Bread and butter, ole reliable" svg={Express} />
-      <ImgWithTooltip title="Functional Programming TS" content="Typescript library that added Category Theory data types and methods" src={Fpts} />
-      <ImgWithTooltip title="Shadcn/ui" content="Customizable component library" src={Shadcn} />
-      <SvgWithTooltip title="Lua" content="Dead simple programming language" svg={Lua} />
-      <SvgWithTooltip title="MacOS" svg={Mac} />
-      <SvgWithTooltip title="Bash" content="Preferred cmdline flavor" svg={Bash} />
-      <SvgWithTooltip title="Bash" content="Typescript" svg={Gulp} />
-      <SvgWithTooltip title="Sass" svg={Sass} />
-      <SvgWithTooltip title="Scala" content="Functional Programming in Java" svg={Scala} />
-      <SvgWithTooltip title="Tmux" content="Terminal Multiplexer" svg={Tmux} />
-      <SvgWithTooltip title="React" svg={ReactSvg} />
-      <SvgWithTooltip title="CSS 3" svg={Css} />
-      <SvgWithTooltip title="HTML 5" svg={Html} />
-      <SvgWithTooltip title="MySql" svg={Sql} />
-      <SvgWithTooltip title="Typescript" svg={Typescript} />
-      <SvgWithTooltip title="Javascript" svg={Javascript} />
-      <SvgWithTooltip title="Angular" svg={Angular} />
-      <SvgWithTooltip title="Tailwind CSS" content="Utility-first CSS framework" svg={Tailwind} />
-      <SvgWithTooltip title="NGINX" content="HTTP Web Server and Proxy" svg={Nginx} />
-      <SvgWithTooltip title="Webpack" content="Javascript Typescript bundler" svg={Webpack} />
-      <SvgWithTooltip title="Mongodb" content="NoSql Database" svg={Mongodb} />
-      <SvgWithTooltip title="Mongodb" content="NoSql Database" svg={Mongodb} />
-      <SvgWithTooltip title="Neovim" content="Successor to Vim with plugins written in Vimscript and Lua" svg={Neovim} />
-      <SvgWithTooltip title="NextJs" svg={Nextjs} />
+    <div className="mx-auto flex flex-col justify-center gap-4">
+      <H1 className="mx-auto">Contact Me</H1>
+      <H3>Please reach out if you have things for me to build, wild ideas, to talk 40K, or just to chat</H3>
+      <DownloadResumeButton />
     </div>
-    <DownloadResumeButton />
   </Column>
 }
 

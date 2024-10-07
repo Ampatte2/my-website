@@ -115,60 +115,28 @@
 }
 
 .mosaic-tile {
+  --tile-size: 200px;
+  --tile-md-size: 350px;
+  --tile-lg-size: 450px;
   border: 1rem solid theme(colors.yellow.500);
   border-radius: 5rem;
+  box-shadow: inset 1px 1px 5px 1px black, 1px 1px 5px 1px black; 
   background-color: theme(colors.slate.900);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   color: white;
-  cursor: pointer;
-  filter: drop-shadow(1px 3px 2px #D3D3D3);
-  box-shadow: inset 1px 1px 5px 1px black, 1px 1px 5px 1px black; 
-  position: absolute;
-  padding: 2rem;
-  margin: auto;
-  height: 100%;
-  transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  transition: background-color matrix3d;
-  transition-duration: 500ms;
-  width: 100%;
-  z-index: 1;
-  &:hover {
-    background-image: none !important;
-  }
-}
-
-.front-face,
-.back-face {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: rotate(0) translate(-50%, -50%);
-  transition-property: opacity;
-  transition-delay: 0ms;
-  text-align: center;
-  padding: 1rem;
-  width: 100%;
-  z-index: 2;
-}
-
-.back-face {
-  opacity: 0;
-}
-
-.front-face {
-  opacity: 1;
-}
-
-.mosaic-tile-container {
-  --tile-size: 200px;
-  --tile-md-size: 350px;
-  --tile-lg-size: 450px;
   display: flex;
+  flex-shrink: 0;
+  filter: drop-shadow(1px 3px 2px #D3D3D3);
   position: relative;
+  transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);
+  transition: background-color matrix3d;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
   height: var(--tile-size);
   width: var(--tile-size);
+  z-index: 1;
 
   @media screen(md) {
     height: var(--tile-md-size);
@@ -179,17 +147,19 @@
     width: var(--tile-lg-size);
   }
 
-  &:hover {
-    .mosaic-tile {
-      background-color: theme(colors.slate.900);
-      background-image: none !important;
-      transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);
-      transform-origin: center;
-    }
-    .front-face {
-      opacity: 0;
-    }
-    .back-face {
+  img {
+    border-radius: 4rem;
+    opacity: 0;
+    transition: opacity 200ms ease-in;
+    transition-delay: 500ms;
+  }
+
+  &.is-in-view {
+    background-color: theme(colors.slate.900);
+    background-image: none !important;
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    transform-origin: center;
+    img {
       opacity: 1;
     }
   }
@@ -197,7 +167,8 @@
 
 .sidebar-section {
   --sidebar-rect-width: 3rem;
-  --sidebar-offset: calc(var(--sidebar-rect-width) / 2 * -1);
+  --sidebar-offset-size: calc(var(--sidebar-rect-width) / 2);
+  --sidebar-offset: calc(var(--sidebar-offset-size) / 2 * -1);
   --sidebar-circle-size: 10rem;
   --sidebar-circle-half: calc(var(--sidebar-circle-size) / 2);
   --sidebar-icon-size: 5rem;
@@ -210,12 +181,13 @@
     display: flex; 
     flex-direction: column;
     padding: 2rem 0;
+    gap: 4rem;
   }
 
   &.right {
     .sidebar {
       padding-left: var(--sidebar-circle-size);
-      margin-left: auto;
+      margin-left: var(--sidebar-offset-size);
       .sidebar-rect {
         top:0;
         right: 0;
@@ -245,6 +217,7 @@
   &.left {
     .sidebar {
       padding-right: var(--sidebar-circle-size);
+      margin-right: var(--sidebar-offset-size);
       .sidebar-circle {
         left: var(--sidebar-offset);
         top: calc(50% - var(--sidebar-circle-half));
@@ -320,3 +293,54 @@
 }
 
 
+
+.skills-container {
+  --skill-icon-sizing: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  padding: 0 10rem;
+
+  .skill-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+
+  .skill-icon {
+    height: var(--skill-icon-sizing);
+    width: var(--skill-icon-sizing);
+    filter: drop-shadow(1px 3px 2px #D3D3D3);
+  }
+
+  .tooltip-container {
+    transform: translateX(100vw);
+    transition: transform 0.75s ease-in-out;
+    margin: auto;
+  }
+
+  &.is-in-view {
+    .tooltip-container {
+      transform: translateX(0);
+    }
+    .tooltip-container:nth-child(2) {
+      transition-delay: 0.15s;
+    }
+    .tooltip-container:nth-child(3) {
+      transition-delay: 0.30s;
+    }
+    .tooltip-container:nth-child(4) {
+      transition-delay: 0.45s;
+    }
+    .tooltip-container:nth-child(5) {
+      transition-delay: 0.60s;
+    }
+  }
+}
+
+.github-calendar {
+  overflow-x: scroll;
+  width: 80vw;
+  .react-activity-calendar {
+    margin:auto;
+  }
+}

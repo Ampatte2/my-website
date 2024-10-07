@@ -4081,10 +4081,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chroma-js@npm:^2.4.2":
-  version: 2.6.0
-  resolution: "chroma-js@npm:2.6.0"
-  checksum: 10c0/6e17f43246f9b3eba8a9db67f5ee9a2d0ef1360077211887da09ec1f0934bb98a358eefaf021003c0bd47cbab540f573a373f362d6b2ba04d0e80ab7677e1640
+"chroma-js@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "chroma-js@npm:3.1.1"
+  checksum: 10c0/fb5e3cd958a954b8cd44017f70aff42ae37bc561cdcea0ebeeb6d2df5989e7402e02c674274af2eefd1478ee172e05ce51ac353e3cbe1db139f599b338523339
   languageName: node
   linkType: hard
 
@@ -4336,6 +4336,13 @@ __metadata:
   version: 3.6.0
   resolution: "date-fns@npm:3.6.0"
   checksum: 10c0/0b5fb981590ef2f8e5a3ba6cd6d77faece0ea7f7158948f2eaae7bbb7c80a8f63ae30b01236c2923cf89bb3719c33aeb150c715ea4fe4e86e37dcf06bed42fb6
+  languageName: node
+  linkType: hard
+
+"date-fns@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "date-fns@npm:4.1.0"
+  checksum: 10c0/b79ff32830e6b7faa009590af6ae0fb8c3fd9ffad46d930548fbb5acf473773b4712ae887e156ba91a7b3dc30591ce0f517d69fd83bd9c38650fdc03b4e0bac8
   languageName: node
   linkType: hard
 
@@ -6603,7 +6610,7 @@ __metadata:
     postcss-import: "npm:^16.1.0"
     postcss-nesting: "npm:^13.0.0"
     react: "npm:^18"
-    react-activity-calendar: "npm:^2.4.0"
+    react-activity-calendar: "npm:^2.5.3"
     react-day-picker: "npm:^8.10.0"
     react-dom: "npm:^18"
     stylelint: "npm:^16.9.0"
@@ -7194,17 +7201,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-activity-calendar@npm:^2.4.0":
-  version: 2.4.0
-  resolution: "react-activity-calendar@npm:2.4.0"
+"react-activity-calendar@npm:^2.5.3":
+  version: 2.5.3
+  resolution: "react-activity-calendar@npm:2.5.3"
   dependencies:
     "@types/chroma-js": "npm:^2.4.3"
-    chroma-js: "npm:^2.4.2"
-    date-fns: "npm:^3.6.0"
+    chroma-js: "npm:^3.1.1"
+    date-fns: "npm:^4.1.0"
   peerDependencies:
     react: ^18.0.0
     react-dom: ^18.0.0
-  checksum: 10c0/f5f4f8941b6b217b1f457622a7c25d22e02600db20407ea0ef7daaac59322c89511ad78987895c72f3eded8c5c66a9ea27073570e7302c08ee088214d0d1648c
+  checksum: 10c0/2b26a756c3cfacfffcf0633292de360368bd51cf876ffcc5663a826b3e09c9eee106507bdbc5320885c91eac041f1b5ce107eb5abc792afdec29119fec6cd3aa
   languageName: node
   linkType: hard
 

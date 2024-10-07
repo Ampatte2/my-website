@@ -27,6 +27,12 @@
       ],
       "@/components/*": [
         "./@/components/*"
+      ],
+      "svgs/*": [
+        "./public/svgs/*"
+      ],
+      "images/*": [
+        "./public/images/*"
       ]
     }
   },
