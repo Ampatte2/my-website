@@ -1,6 +1,8 @@
-import { forwardRef, PropsWithChildren, type ReactNode } from "react"
 import * as TooltipPrimitive from "@radix-ui/react-tooltip"
 
+import { H3, H4 } from "@/components/ui/elements";
+import Image, { StaticImageData } from "next/image";
+import { JSXElementConstructor, PropsWithChildren, ReactNode, useState, forwardRef } from "react";
 import { cn } from "@/lib/utils"
 
 const TooltipContent = forwardRef<
@@ -11,7 +13,7 @@ const TooltipContent = forwardRef<
     ref={ref}
     sideOffset={sideOffset}
     className={cn(
-      "z-50 overflow-hidden rounded-md border bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+      "z-50 overflow-hidden rounded-lg border bg-popover px-4 py-4 text-sm text-popover-foreground shadow-md animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
       className
     )}
     {...props}
@@ -19,21 +21,42 @@ const TooltipContent = forwardRef<
 ))
 TooltipContent.displayName = TooltipPrimitive.Content.displayName
 
-export type TooltipProps = PropsWithChildren<{ content: ReactNode }>
+export type TooltipProps = PropsWithChildren<{content?: ReactNode, title: string }>
 
-const Tooltip = (props: TooltipProps) => {
-  return (
-    <TooltipPrimitive.TooltipProvider>
-      <TooltipPrimitive.Root>
-        <TooltipPrimitive.TooltipTrigger asChild>
-          {props.children}
-        </TooltipPrimitive.TooltipTrigger>
-        <TooltipPrimitive.TooltipContent>
+const Tooltip = (props: PropsWithChildren<TooltipProps>) => 
+  <TooltipPrimitive.TooltipProvider>
+    <TooltipPrimitive.Tooltip delayDuration={0}>
+      <TooltipPrimitive.TooltipTrigger>
+        {props.children}
+      </TooltipPrimitive.TooltipTrigger>
+      <TooltipContent side="top" sideOffset={8}>
+        <div className="flex flex-col text-center gap-2">
+          <H4>{props.title}</H4>
           {props.content}
-        </TooltipPrimitive.TooltipContent>
-      </TooltipPrimitive.Root>
-    </TooltipPrimitive.TooltipProvider>
-  )
-}
+        </div>
+      </TooltipContent>
+    </TooltipPrimitive.Tooltip>
+  </TooltipPrimitive.TooltipProvider>;
 
-export { Tooltip }
+const SvgWithTooltip = (props: {svg: JSXElementConstructor<{className?: string}>} & TooltipProps) => 
+  <Tooltip
+    title={props.title}
+    content={props.content}
+  >
+    <props.svg className="tooltip-media" />
+  </Tooltip>
+
+
+const ImgWithTooltip = (props: {src: StaticImageData} & TooltipProps) => 
+  <Tooltip
+    title={props.title}
+    content={props.content}
+  >
+    <Image src={props.src} alt={props.title} className="tooltip-media"/>
+  </Tooltip>
+
+export { 
+  Tooltip,
+  SvgWithTooltip,
+  ImgWithTooltip
+}

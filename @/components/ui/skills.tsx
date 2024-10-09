@@ -1,5 +1,7 @@
 "use client"
+import {useState} from "react";
 import { cn } from "@/lib/utils";
+import { ImgWithTooltip, SvgWithTooltip } from "@/components/ui/tooltip";
 import { isInViewportListener } from "../../../util/isInViewPort";
 import Fpts from "images/fp-ts-logo.png";
 import Shadcn from "images/shadcn.png";
@@ -27,46 +29,6 @@ import Tmux from "svgs/tmux.svg";
 import Typescript from "svgs/typescript-official.svg";
 import Webpack from "svgs/webpack.svg";
 
-import { H3 } from "@/components/ui/elements";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@radix-ui/react-tooltip";
-import Image, { StaticImageData } from "next/image";
-import { JSXElementConstructor, PropsWithChildren, ReactNode, useState } from "react";
-
-type WithTooltipProps = {content?: ReactNode, title: string }
-
-const WithTooltip = (props: PropsWithChildren<WithTooltipProps>) => <div className="tooltip-container">
-  <TooltipProvider>
-    <Tooltip delayDuration={0}>
-      <TooltipTrigger>
-        {props.children}
-      </TooltipTrigger>
-      <TooltipContent side="top" sideOffset={8}>
-        <div className="flex flex-col text-center w-80">
-          <H3>{props.title}</H3>
-          {props.content}
-        </div>
-      </TooltipContent>
-    </Tooltip>
-  </TooltipProvider>
-</div>;
-
-const SvgWithTooltip = (props: {svg: JSXElementConstructor<{className: string}>} & WithTooltipProps) => 
-  <WithTooltip
-    title={props.title}
-    content={props.content}
-  >
-    <props.svg className="skill-icon" />
-  </WithTooltip>
-
-
-const ImgWithTooltip = (props: {src: StaticImageData} & WithTooltipProps) => 
-  <WithTooltip
-    title={props.title}
-    content={props.content}
-  >
-    <Image src={props.src} alt={props.title} className="skill-icon" />
-  </WithTooltip>
-
 export const Skills = () => {
   const [isInView, setIsInView] = useState(false);
 
@@ -82,7 +44,7 @@ export const Skills = () => {
       <SvgWithTooltip title="ExpressJs" content="Bread and butter, ole reliable" svg={Express} />
       <SvgWithTooltip title="Lua" content="Dead simple programming language" svg={Lua} />
       <SvgWithTooltip title="NodeJs" svg={Nodejs} />
-      <ImgWithTooltip title="Functional Programming TS" content="Typescript Category Theory library" src={Fpts} />
+      <ImgWithTooltip title="FP TS" content="Functional Programming in TSC" src={Fpts} />
       <SvgWithTooltip title="Tmux" content="Terminal Multiplexer" svg={Tmux} />
     </div>
     <div className="skill-row">

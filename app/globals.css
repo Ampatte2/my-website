@@ -2,6 +2,7 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+/* Globals */
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -34,6 +35,14 @@
     --ring: 215 20.2% 65.1%;
 
     --radius: 0.5rem;
+    --tw-shadow-color: #D3D3D3;
+    --radix-navigation-menu-viewport-height: 3rem;
+    --radix-navigation-menu-viewport-width: 3rem;
+    --radix-accordion-content-height: 3rem;
+    --tw-text-opacity: 1;
+    --tw-space-y-reverse: 1;
+    --tw-space-x-reverse: 1;
+
   }
 
   .dark {
@@ -67,6 +76,13 @@
     --ring: 216 34% 17%;
 
     --radius: 0.5rem;
+    --tw-shadow-color: #D3D3D3;
+    --radix-navigation-menu-viewport-height: 3rem;
+    --radix-navigation-menu-viewport-width: 3rem;
+    --radix-accordion-content-height: 3rem;
+    --tw-text-opacity: 1;
+    --tw-space-y-reverse: 1;
+    --tw-space-x-reverse: 1;
   }
 
 }
@@ -78,11 +94,15 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
   }
   html {
     font-size: 16px;
   }
 }
+
+
+/* Components */
 
 .timeline {
   --timeline-border-width: 0.5rem;
@@ -118,13 +138,10 @@
   --tile-size: 200px;
   --tile-md-size: 350px;
   --tile-lg-size: 450px;
-  border: 1rem solid theme(colors.yellow.500);
+  border:1rem solid theme(colors.yellow.500);
   border-radius: 5rem;
   box-shadow: inset 1px 1px 5px 1px black, 1px 1px 5px 1px black; 
   background-color: theme(colors.slate.900);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
   color: white;
   display: flex;
   flex-shrink: 0;
@@ -151,7 +168,7 @@
     border-radius: 4rem;
     opacity: 0;
     transition: opacity 200ms ease-in;
-    transition-delay: 500ms;
+    transition-delay: 200ms;
   }
 
   &.is-in-view {
@@ -161,6 +178,7 @@
     transform-origin: center;
     img {
       opacity: 1;
+      transition-delay: 500ms;
     }
   }
 }
@@ -292,13 +310,11 @@
   }
 }
 
-
-
 .skills-container {
   --skill-icon-sizing: 5rem;
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 4rem;
   padding: 0 10rem;
 
   .skill-row {
@@ -306,32 +322,32 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 
-  .skill-icon {
+  .tooltip-media {
     height: var(--skill-icon-sizing);
     width: var(--skill-icon-sizing);
     filter: drop-shadow(1px 3px 2px #D3D3D3);
   }
 
-  .tooltip-container {
+  button {
     transform: translateX(100vw);
     transition: transform 0.75s ease-in-out;
     margin: auto;
   }
 
   &.is-in-view {
-    .tooltip-container {
+    button {
       transform: translateX(0);
     }
-    .tooltip-container:nth-child(2) {
+    button:nth-child(2) {
       transition-delay: 0.15s;
     }
-    .tooltip-container:nth-child(3) {
+    button:nth-child(3) {
       transition-delay: 0.30s;
     }
-    .tooltip-container:nth-child(4) {
+    button:nth-child(4) {
       transition-delay: 0.45s;
     }
-    .tooltip-container:nth-child(5) {
+    button:nth-child(5) {
       transition-delay: 0.60s;
     }
   }
@@ -344,3 +360,4 @@
     margin:auto;
   }
 }
+

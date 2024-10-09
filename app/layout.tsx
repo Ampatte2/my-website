@@ -26,7 +26,7 @@ export default function RootLayout({
         "min-h-screen bg-background font-sans antialiased",
         fontSans.variable
       )}>
-        <div className="pt-10 h-full w-full">
+        <div className="py-10 h-full w-full">
           {children}
         </div>
       </body>
