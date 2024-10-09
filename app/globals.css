@@ -20,7 +20,7 @@
     --card: 0 0% 100%;
     --card-foreground: 222.2 47.4% 11.2%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 215 25% 27%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -109,8 +109,9 @@
   --timeline-padding-left: 2rem;
   .timeline-item {
     padding-left: var(--timeline-padding-left);
-    margin-left: 1rem;
     position: relative;
+    margin-left: 1rem;
+
   }
   .timeline-circle {
     --timeline-circle-size: 2rem;
@@ -128,6 +129,10 @@
   }
   .timeline-item:not(:last-child) {
     border-left: var(--timeline-border-width) solid theme(colors.yellow.500);
+    padding-bottom: 2rem;
+    @media screen(lg) {
+      padding-bottom: 4rem;
+    }
     .timeline-content {
       padding-bottom: 3rem;
     }
@@ -151,6 +156,7 @@
   transition: background-color matrix3d;
   transition-duration: 1s;
   transition-timing-function: ease-in-out;
+  margin: auto;
   height: var(--tile-size);
   width: var(--tile-size);
   z-index: 1;

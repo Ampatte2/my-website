@@ -45,7 +45,7 @@ export const Skills = () => {
       <SvgWithTooltip title="Lua" content="Dead simple programming language" svg={Lua} />
       <SvgWithTooltip title="NodeJs" svg={Nodejs} />
       <ImgWithTooltip title="FP TS" content="Functional Programming in TSC" src={Fpts} />
-      <SvgWithTooltip title="Tmux" content="Terminal Multiplexer" svg={Tmux} />
+      <SvgWithTooltip title="Tmux/Sway" content="Terminal Multiplexer/Window Manager" svg={Tmux} />
     </div>
     <div className="skill-row">
       <SvgWithTooltip title="Typescript bundler" content="Gulp" svg={Gulp} />
