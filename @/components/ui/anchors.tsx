@@ -66,7 +66,7 @@ MailToAnchor.displayName = "MailToAnchor"
 const TelAnchor = React.forwardRef<
   HTMLAnchorElement,
   AnchorButtonProps 
- & VariantProps<typeof buttonVariants>>((props, ref) => 
+& VariantProps<typeof buttonVariants>>((props, ref) => 
   <AnchorButton 
     aria-label="Call Me at 623-692-6992"
     href={"tel:623-692-6992"} 
@@ -78,9 +78,19 @@ const TelAnchor = React.forwardRef<
 TelAnchor.displayName = "TelAnchor"
 
 const Anchor = React.forwardRef<
-  HTMLAnchorElement,
-  React.ComponentPropsWithoutRef<"nav"> & { href: Url, icon?: React.ReactElement, title: string }
->(({ ...props }, ref) => <Link target="_blank" href={props.href} className={cn(props.className, 'flex flex-row', "underline text-slate-700 hover:text-slate-300")} ref={ref}>{props.icon}<h4>{props.title}</h4></Link>)
+HTMLAnchorElement,
+React.ComponentPropsWithoutRef<"nav"> & { href: Url, icon?: React.ReactElement, title: string }
+>(({ ...props }, ref) => 
+  <Link 
+    target="_blank" 
+    href={props.href} 
+    className={cn(props.className, "text-center underline text-slate-700 hover:text-slate-300")} 
+    ref={ref}
+  >
+    {props.icon}
+    {props.title}
+  </Link>
+)
 
 export {
   AnchorIcon,
