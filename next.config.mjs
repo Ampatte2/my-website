@@ -27,7 +27,8 @@ const nextConfig = {
 
     return config
   }, 
-  // output: "export"
+  // For Creating static build file
+   // output: "export"
 };
 
 export default nextConfig;

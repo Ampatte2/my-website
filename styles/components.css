@@ -5,7 +5,6 @@
     padding-left: var(--timeline-padding-left);
     position: relative;
     margin-left: 1rem;
-
   }
   .timeline-circle {
     --timeline-circle-size: 2rem;
@@ -98,8 +97,8 @@
   .sidebar-main {
     display: flex; 
     flex-direction: column;
-    padding: 2rem 0;
     gap: 4rem;
+    margin-top: 2rem;
   }
 
   &.right {
@@ -254,7 +253,7 @@
 }
 
 .github-calendar {
-  overflow-x: scroll;
+  overflow-x: hidden;
   width: 80vw;
   .react-activity-calendar {
     margin:auto;

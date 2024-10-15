@@ -120,7 +120,7 @@ export default function AboutMe() {
     <section>
       <SectionWithSidebar orientation="left">
         <SidebarTop icon={<DesktopComp />} />
-        <SidebarMain classes="gap-4">
+        <SidebarMain> 
           <div className="flex flex-col">
             <H2 className="mb-4 mx-auto">Professional History</H2>
             <div className="gap-4 flex flex-col xl:grid xl:grid-cols-5">
@@ -149,7 +149,7 @@ export default function AboutMe() {
               </div>
             </div>
           </div>
-          <div className="mt-4 flex flex-col gap-4">
+          <div className="flex flex-col gap-4">
             <P>
               Whether collaborating with cross-functional teams or leading projects independently, I am committed to pushing the boundaries of what's possible and delivering solutions that drive success. My career has been defined by a relentless pursuit of excellence and a passion for innovation.
             </P>
@@ -161,7 +161,7 @@ export default function AboutMe() {
       </SectionWithSidebar>
       <SectionWithSidebar orientation="left">
         <SidebarBottom icon={<Github />} />
-        <SidebarMain>
+        <SidebarMain classes="overflow-scroll">
           <div className="flex flex-col">
             <H2 className="mb-4 mx-auto">My Work</H2>
             <div className="flex mx-auto my-4 github-calendar">
@@ -183,8 +183,6 @@ export default function AboutMe() {
     </section>
     <H2 className="mx-auto">Tech Skills</H2>
     <Skills />
-    <section>
-    </section>
     <section>
       <SectionWithSidebar orientation="right">
         <SidebarMain>
