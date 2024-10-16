@@ -84,7 +84,7 @@ React.ComponentPropsWithoutRef<"nav"> & { href: Url, icon?: React.ReactElement, 
   <Link 
     target="_blank" 
     href={props.href} 
-    className={cn(props.className, "text-center underline text-slate-700 hover:text-slate-300")} 
+    className={cn(props.className, "underline text-slate-700 hover:text-slate-300")} 
     ref={ref}
   >
     {props.icon}

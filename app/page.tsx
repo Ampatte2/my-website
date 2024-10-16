@@ -103,20 +103,20 @@ const data = [
 export default function AboutMe() {
 
   return <Column classes="flex flex-col gap-20">
-    <div className="flex gap-4 mx-auto px-4 lg:px-10">
+    <div className="flex flex-col md:flex-row gap-4 mx-auto px-4 lg:px-10">
       <Image
         src="/images/archery.png"
         alt="archery"
         width={100}
         height={100}
-        style={{ borderRadius: "24px", border: "1px solid black", filter: "drop-shadow(1px 2px 1px #D3D3D3)" }}
+        style={{ borderRadius: "24px", border: "1px solid black", filter: "drop-shadow(1px 2px 1px #D3D3D3)", margin: "auto" }}
       />
-      <div className="flex flex-col">
-        <H1 className="ml-2 my-auto">Andrew M. Patterson</H1>
+      <div className="flex flex-col text-center">
+        <H1 className="md:ml-2 my-auto">Andrew M. Patterson</H1>
         <H2 className="col-start-2">Software Engineer, UAS Pilot, Tinkerer</H2>
       </div>
     </div>
-    <H2 className="mx-auto px-20 text-center">There is no such thing as a problem, only a challenge waiting to be solved.</H2>
+    <H2 className="mx-auto px-5 md:px-20 text-center">There is no such thing as a problem, only a challenge waiting to be solved.</H2>
     <section>
       <SectionWithSidebar orientation="left">
         <SidebarTop icon={<DesktopComp />} />
@@ -235,9 +235,9 @@ export default function AboutMe() {
                 <H3>My Editor</H3>
                 <P>As a junior I would pair with this one individual who used Emacs, and it astounded me the ease and level of control they had over their editor. Navigating files, moving around inside files, text manipulation, and infinite customization. I realized that they were able to iterate significantly faster than I was using vanilla VSCode.</P>
                 <P>I spent the next 6 months learning a new keyboard and Vim (Neovim flavor), and it was well worth every second. The choice of Vim has been great, my editor comes standard on every machine, and now I can be the one to impress the juniors.</P>
-                <span className="flex text-xl">
+                <span className="flex flex-col md:flex-row text-xl">
                   <H4>Check out my Nvim </H4>
-                  <Anchor href="https://github.com/Ampatte2/dot_files/tree/main/linux-config/nvim" title="Dot Files" className="ml-2 text-2xl tracking-tight" />
+                  <Anchor href="https://github.com/Ampatte2/dot_files/tree/main/linux-config/nvim" title="Dot Files" className="text-1xl md:text-2xl md:ml-2 tracking-tight" />
                 </span>
               </div>
               <div className="flex flex-col gap-4">
@@ -260,9 +260,9 @@ export default function AboutMe() {
                 <P>Then it kind of spiraled from there, I started expirementing with different seats, different desks, sitting on the ground, sitting on a ball chair, and all gave me issues when trying to code for long stretches (10+ hours).</P>
                 <P>After a couple iterations I thought to myself: What is the most comfortable chair? A zero gravity recliner of course! Then I just kind of put it all together my lounge chair, split keyboard, and a PVC frame for the monitor to keep it at a good distance above my head.</P>
                 <P>Next iteration will remove the PVC with a better material, and a better way to get in and out. Right now I kind of slink out to the side.</P>
-                <span className="flex text-xl">
+                <span className="flex flex-col md:flex-row text-xl">
                   <H4>Check out my Keyboard Layout</H4>
-                  <Anchor href="https://configure.zsa.io/moonlander/layouts/Rgmyl/5Dw66/0" title="You Only Need 38" className="ml-2 text-2xl tracking-tight"/>
+                  <Anchor href="https://configure.zsa.io/moonlander/layouts/Rgmyl/5Dw66/0" title="You Only Need 38" className="text-1xl md:text-2xl md:ml-2 tracking-tight"/>
                 </span>
               </SectionWithImageRight>
             </div>
@@ -311,70 +311,73 @@ export default function AboutMe() {
         </SidebarMain>
       </SectionWithSidebar>
     </section>
-    <div className="mx-auto flex flex-col justify-center gap-12 my-20">
-      <div className="flex mx-auto">
-        <H1>Contact Me</H1>
-      </div>
-      <div className="flex mx-auto">
-        <Image
-          src="/images/snow_me.png"
-          alt="archery"
-          width={200}
-          height={200}
-          className="mr-8 mb-auto"
-          style={{ borderRadius: "24px", border: "1px solid black", filter: "drop-shadow(1px 2px 1px #D3D3D3)", objectFit: "cover" }}
-        />
-        <div className="flex flex-col">
-          <H3>When you:</H3>
-          <OL className="text-2xl ml">
-            <li>Have a project that needs to be built</li>
-            <li>A wild idea that needs a duck</li>
-            <li>Want to fly a drone</li>
-            <li>Discuss the best editor and why it is Vim</li>
-            <li>Need to gripe about Typescript tooling</li>
-          </OL>
+    <section>
+      <div className="mx-auto flex flex-col justify-center gap-12 my-20">
+        <div className="flex mx-auto">
+          <H1>Contact Me</H1>
+        </div>
+        <div className="flex flex-col md:flex-row mx-auto">
+          <Image
+            src="/images/snow_me.png"
+            alt="archery"
+            width={200}
+            height={200}
+            className="mx-auto md:mr-8 mb-auto"
+            style={{ borderRadius: "24px", border: "1px solid black", filter: "drop-shadow(1px 2px 1px #D3D3D3)", objectFit: "cover" }}
+          />
+          <div className="flex flex-col px-4 md:px-0">
+            <H3>When you:</H3>
+            <OL className="text-2xl ml">
+              <li>Have a project that needs to be built</li>
+              <li>A wild idea that needs a duck</li>
+              <li>Want to fly a drone</li>
+              <li>Discuss the best editor and why it is Vim</li>
+              <li>Need to gripe about Typescript tooling</li>
+            </OL>
+          </div>
+        </div>
+        <div className="flex justify-around">
+          <Tooltip title="Github">
+            <AnchorIcon
+              href="https://github.com/Ampatte2"
+              target="_blank"
+              icon={<Github />}
+            />
+          </Tooltip>
+          <Tooltip title="Linkedin">
+            <AnchorIcon
+              href="https://www.linkedin.com/in/andrewmpatterson/"
+              target="_blank"
+              icon={<Linkedin />}
+            />
+          </Tooltip>
+          <Tooltip title="Resume">
+            <AnchorIcon
+              href="/Andrew_Patterson_Resume.pdf"
+              target="_blank"
+              icon={<Document />}
+            />
+          </Tooltip>
+        </div>
+        <div className="flex flex-col md:flex-row gap-4">
+          <MailToAnchor 
+            title="Send me an Email"
+            subject="Inquiring About: "
+            body={["Howdy Andrew,"]} 
+            size="lg"
+            variant="link"
+            className="text-3xl rounded-full font-semibold tracking-tight p-12 mx-auto"
+            icon={<Mail className="h-10 w-10 mr-2" />}
+          />
+          <TelAnchor
+            className="text-3xl rounded-full font-semibold tracking-tight p-12 mx-auto"
+            title="Send me a Call/Text"
+            variant="link"
+            icon={<Phone className="h-10 w-10 mr-2" />}
+          />
         </div>
       </div>
-      <div className="flex justify-around">
-        <Tooltip title="Github">
-          <AnchorIcon
-            href="https://github.com/Ampatte2"
-            target="_blank"
-            icon={<Github />}
-          />
-        </Tooltip>
-        <Tooltip title="Linkedin">
-          <AnchorIcon
-            href="https://www.linkedin.com/in/andrewmpatterson/"
-            target="_blank"
-            icon={<Linkedin />}
-          />
-        </Tooltip>
-        <Tooltip title="Resume">
-          <AnchorIcon
-            href="/Andrew_Patterson_Resume.pdf"
-            target="_blank"
-            icon={<Document />}
-          />
-        </Tooltip>
-      </div>
-      <div className="flex gap-4">
-        <MailToAnchor 
-          title="Send me an Email"
-          subject="Inquiring About: "
-          body={["Howdy Andrew,"]} 
-          size="lg"
-          variant="default"
-          className="text-3xl rounded-full font-semibold tracking-tight p-12 mx-auto"
-          icon={<Mail className="h-10 w-10 mr-2" />}
-        />
-        <TelAnchor
-          className="text-3xl rounded-full font-semibold tracking-tight p-12 mx-auto"
-          title="Send me a Call/Text"
-          icon={<Phone className="h-10 w-10 mr-2" />}
-        />
-      </div>
-    </div>
+    </section>
   </Column>
 }
 
