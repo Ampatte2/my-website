@@ -103,20 +103,22 @@ const data = [
 export default function AboutMe() {
 
   return <Column classes="flex flex-col gap-20">
-    <div className="flex flex-col md:flex-row gap-4 mx-auto px-4 lg:px-10">
-      <Image
-        src="/images/archery.png"
-        alt="archery"
-        width={100}
-        height={100}
-        style={{ borderRadius: "24px", border: "1px solid black", filter: "drop-shadow(1px 2px 1px #D3D3D3)", margin: "auto" }}
-      />
-      <div className="flex flex-col text-center">
-        <H1 className="md:ml-2 my-auto">Andrew M. Patterson</H1>
-        <H2 className="col-start-2">Software Engineer, UAS Pilot, Tinkerer</H2>
+    <section className="px-4 lg:px-10">
+      <div className="flex flex-col md:flex-row gap-4 mx-auto justify-center">
+        <Image
+          src="/images/archery.png"
+          alt="archery"
+          width={100}
+          height={100}
+          style={{ borderRadius: "24px", border: "1px solid black", filter: "drop-shadow(1px 2px 1px #D3D3D3)" }}
+        />
+        <div className="flex flex-col text-center">
+          <H1 className="md:ml-2 my-auto">Andrew M. Patterson</H1>
+          <H2 className="col-start-2">Software Engineer, UAS Pilot, Tinkerer</H2>
+        </div>
       </div>
-    </div>
-    <H2 className="mx-auto px-5 md:px-20 text-center">There is no such thing as a problem, only a challenge waiting to be solved.</H2>
+      <H2 className="mx-auto text-center py-10">There is no such thing as a problem, only a challenge waiting to be solved.</H2>
+    </section>
     <section>
       <SectionWithSidebar orientation="left">
         <SidebarTop icon={<DesktopComp />} />
@@ -284,7 +286,7 @@ export default function AboutMe() {
             title="Dante Dog"
             image={danteImg}
           >
-            <P>This is my boy we hang out and do just about everything together. He's a four year old Border Collie Corgi mixed breed, he loves running and eating all the food he can find or coerce out of me with those puppy dog eyes</P>
+            <P>This is my boy we hang out and do just about everything together. He's a four year old Border Collie Corgi mixed breed, he loves running and eating all the food he can find or coerce out of me with those puppy dog eyes.</P>
           </SectionWithImageRight>
           <SectionWithImageLeft
             title="Gardening"
@@ -305,8 +307,8 @@ export default function AboutMe() {
             image={campfireMeImg}
           >
             <P>The outdoors is where it is at, it's where we are all from. I am an avid backpacker and hiker.</P>
-            <P>It's been a while since I hiked all the major mountain ranges in Phoenix Flagstaff, but I know I'll get that kick to go exploring again.</P>
-            <P>Definitely more the one that likes to blaze a trail rather than follow the known path.</P>
+            <P>It's been a while since I hiked all the major mountain ranges in Phoenix/Flagstaff, but I know I'll get that kick to go exploring again.</P>
+            <P>Always down for an adventure, the path less taken is usually difficult, but nothing quite beats that feeling of unexplored terra firma.</P>
           </SectionWithImageLeft>
         </SidebarMain>
       </SectionWithSidebar>
@@ -365,14 +367,14 @@ export default function AboutMe() {
             subject="Inquiring About: "
             body={["Howdy Andrew,"]} 
             size="lg"
-            variant="link"
+            variant="default"
             className="text-3xl rounded-full font-semibold tracking-tight p-12 mx-auto"
             icon={<Mail className="h-10 w-10 mr-2" />}
           />
           <TelAnchor
-            className="text-3xl rounded-full font-semibold tracking-tight p-12 mx-auto"
+            className="slate-700 text-3xl rounded-full font-semibold tracking-tight p-12 mx-auto"
             title="Send me a Call/Text"
-            variant="link"
+            variant="default"
             icon={<Phone className="h-10 w-10 mr-2" />}
           />
         </div>

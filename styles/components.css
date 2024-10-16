@@ -1,6 +1,8 @@
 section {
   margin-bottom: 5rem;
 }
+
+/* Timeline */
 .timeline {
   --timeline-border-width: 0.5rem;
   --timeline-padding-left: 2rem;
@@ -35,6 +37,7 @@ section {
   }
 }
 
+/* Mosaic Tile */
 .mosaic-tile {
   --tile-size: 200px;
   --tile-md-size: 350px;
@@ -85,6 +88,11 @@ section {
   }
 }
 
+/* Sidebar */
+.sidebar-section {
+  .sidebar-main {
+  }
+}
 .sidebar-section {
   --sidebar-rect-width: 3rem;
   --sidebar-offset-size: calc(var(--sidebar-rect-width) / 2);
@@ -103,7 +111,6 @@ section {
   svg {
     z-index: 3;
   }
-
   .sidebar-rect {
     z-index: 1;
   }
@@ -111,7 +118,7 @@ section {
     display: flex; 
     flex-direction: column;
     gap: 4rem;
-    margin-top: 2rem;
+    margin-top: 10rem;
     z-index:4;
   }
 
@@ -239,6 +246,13 @@ section {
   }
 }
 
+.sidebar-section:first-child {
+  .sidebar-main {
+    margin-top: 0;
+  }
+}
+
+/* Skills */
 .skills-container {
   --skill-icon-sizing: 5rem;
   --skill-icon-sizing-md: 3rem;
@@ -290,6 +304,7 @@ section {
   }
 }
 
+/* Calendar */
 .github-calendar {
   overflow-x: hidden;
   width: 80vw;

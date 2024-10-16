@@ -10,7 +10,7 @@ export const SidebarBase = (props: SideBarProps) =>  {
   const [isInView, setIsInView] = useState(false);
   return <div 
     className={cn("sidebar", isInView ? "is-in-view" : "")}
-    ref={(node) => isInViewportListener(node, () => setIsInView(true), () => setIsInView(false), props.bottomOffset ?? 400)}
+    ref={(node) => isInViewportListener(node, () => setIsInView(true), () => setIsInView(false), props.bottomOffset ?? 0)}
 >
     {props.cap}
     {props.icon} 

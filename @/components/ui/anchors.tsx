@@ -37,12 +37,12 @@ const AnchorButton = React.forwardRef<
   AnchorButtonProps
   >(({  variant, size, className, icon, title, ...props }, ref) => 
   <a 
-    className={cn(buttonVariants({ variant, size, className }), "cursor-pointer")} 
+    className={cn(buttonVariants({ variant, size }), "cursor-pointer", className)} 
     ref={ref}
     {...props}
   >
     {icon}
-    <H4>{title}</H4>
+    {title}
   </a>
 )
 
