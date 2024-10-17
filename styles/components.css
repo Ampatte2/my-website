@@ -90,10 +90,6 @@ section {
 
 /* Sidebar */
 .sidebar-section {
-  .sidebar-main {
-  }
-}
-.sidebar-section {
   --sidebar-rect-width: 3rem;
   --sidebar-offset-size: calc(var(--sidebar-rect-width) / 2);
   --sidebar-offset: calc(var(--sidebar-offset-size) / 2 * -1);
@@ -118,7 +114,7 @@ section {
     display: flex; 
     flex-direction: column;
     gap: 4rem;
-    margin-top: 10rem;
+    margin: 10rem auto 0 auto;
     z-index:4;
   }
 
@@ -133,6 +129,7 @@ section {
       .sidebar-rect {
         top:0;
         right: 0;
+        position: absolute;
       } 
       .sidebar-circle {
         left: var(--sidebar-offset);
@@ -152,7 +149,7 @@ section {
       }
     }
     .sidebar-main {
-      padding-left: 1rem;
+      padding-left: 5rem;
       @media screen (md) {
         padding-left: var(--sidebar-circle-size);
       }
@@ -183,7 +180,7 @@ section {
       }
     }
     .sidebar-main {
-      padding-right: 1rem;
+      padding-right: 5rem;
       @media screen (md) {
         padding-right: var(--sidebar-circle-size);
       }
@@ -254,12 +251,13 @@ section {
 
 /* Skills */
 .skills-container {
-  --skill-icon-sizing: 5rem;
   --skill-icon-sizing-md: 3rem;
+  --skill-icon-sizing: 5rem;
+  --skill-icon-sizing-xl: 7rem;
   display: flex;
   flex-direction: column;
   gap: 4rem;
-  padding:0 0 var(--skill-icon-sizing-md) 0 ;
+  padding: 0 0 var(--skill-icon-sizing-md) 0 ;
   @media screen(md) {
     padding: 0 10rem;
   }
@@ -275,6 +273,10 @@ section {
     @media screen(md) {
       height: var(--skill-icon-sizing);
       width: var(--skill-icon-sizing);
+    }
+    @media screen(xl) {
+      height: var(--skill-icon-sizing-xl);
+      width: var(--skill-icon-sizing-xl);
     }
     filter: drop-shadow(1px 3px 2px #D3D3D3);
   }

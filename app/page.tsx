@@ -330,15 +330,15 @@ export default function AboutMe() {
           <div className="flex flex-col px-4 md:px-0">
             <H3>When you:</H3>
             <OL className="text-2xl ml">
-              <li>Have a project that needs to be built</li>
-              <li>A wild idea that needs a duck</li>
-              <li>Want to fly a drone</li>
-              <li>Discuss the best editor and why it is Vim</li>
-              <li>Need to gripe about Typescript tooling</li>
+              <li>Have a project that needs to be built.</li>
+              <li>A wild idea that needs a duck.</li>
+              <li>Want to fly a drone.</li>
+              <li>Discuss the best editor and why it is Vim.</li>
+              <li>Gripe about Typescript tooling.</li>
             </OL>
           </div>
         </div>
-        <div className="flex justify-around">
+        <div className="flex gap-8 mx-auto">
           <Tooltip title="Github">
             <AnchorIcon
               href="https://github.com/Ampatte2"
@@ -361,7 +361,7 @@ export default function AboutMe() {
             />
           </Tooltip>
         </div>
-        <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex flex-col md:flex-row gap-4 mx-auto">
           <MailToAnchor 
             title="Send me an Email"
             subject="Inquiring About: "
@@ -372,7 +372,7 @@ export default function AboutMe() {
             icon={<Mail className="h-10 w-10 mr-2" />}
           />
           <TelAnchor
-            className="slate-700 text-3xl rounded-full font-semibold tracking-tight p-12 mx-auto"
+            className="text-3xl rounded-full font-semibold tracking-tight p-12 mx-auto"
             title="Send me a Call/Text"
             variant="default"
             icon={<Phone className="h-10 w-10 mr-2" />}

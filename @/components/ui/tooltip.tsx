@@ -21,7 +21,7 @@ const TooltipContent = forwardRef<
 ))
 TooltipContent.displayName = TooltipPrimitive.Content.displayName
 
-export type TooltipProps = PropsWithChildren<{content?: ReactNode, title: string }>
+export type TooltipProps = PropsWithChildren<{content?: ReactNode, contentClass?: string, title: string }>
 
 const Tooltip = (props: PropsWithChildren<TooltipProps>) => 
   <TooltipPrimitive.TooltipProvider>
@@ -30,7 +30,7 @@ const Tooltip = (props: PropsWithChildren<TooltipProps>) =>
         {props.children}
       </TooltipPrimitive.TooltipTrigger>
       <TooltipContent side="top" sideOffset={8}>
-        <div className="flex flex-col text-center gap-2">
+        <div className={"flex flex-col text-center gap-2 text-slate-700"}>
           <H4>{props.title}</H4>
           {props.content}
         </div>
