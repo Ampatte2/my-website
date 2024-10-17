@@ -243,11 +243,6 @@ section {
   }
 }
 
-.sidebar-section:first-child {
-  .sidebar-main {
-    margin-top: 0;
-  }
-}
 
 /* Skills */
 .skills-container {

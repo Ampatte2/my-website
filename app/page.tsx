@@ -73,6 +73,8 @@ const Timeline = (props: TimelineProps) => (
   </div>
 );
 
+const imgStyles = { borderRadius: "24px", border: "2px solid black", filter: "drop-shadow(2px 3px 2px #D3D3D3)", objectFit: "cover" };
+
 const SectionWithSidebar = (props: PropsWithChildren<{orientation: "left" | "right", classes?: ClassValue}>) => <div className={cn("sidebar-section", props.orientation, props.classes)}>{props.children}</div>
 
 const SectionWithImageLeft = (props: PropsWithChildren<{title: string, image: StaticImageData}>) => 
@@ -103,28 +105,28 @@ const data = [
 export default function AboutMe() {
 
   return <Column classes="flex flex-col gap-20">
-    <section className="px-4 lg:px-10">
+    <section className="px-4 lg:px-10 pt-20">
       <div className="flex flex-col md:flex-row gap-4 mx-auto justify-center">
         <Image
           src="/images/archery.png"
           alt="archery"
-          width={100}
-          height={100}
-          style={{ borderRadius: "24px", border: "1px solid black", filter: "drop-shadow(1px 2px 1px #D3D3D3)" }}
+          width={150}
+          height={150}
+          style={imgStyles}
         />
-        <div className="flex flex-col text-center">
-          <H1 className="md:ml-2 my-auto">Andrew M. Patterson</H1>
+        <div className="flex flex-col text-center my-auto">
+          <H1 className="md:ml-2">Andrew M. Patterson</H1>
           <H2 className="col-start-2">Software Engineer, UAS Pilot, Tinkerer</H2>
         </div>
       </div>
-      <H2 className="mx-auto text-center py-10">There is no such thing as a problem, only a challenge waiting to be solved.</H2>
+      <H3 className="mx-auto text-center py-10">There is no such thing as a problem, only a challenge waiting to be solved.</H3>
     </section>
     <section>
       <SectionWithSidebar orientation="left">
         <SidebarTop icon={<DesktopComp />} />
         <SidebarMain> 
           <div className="flex flex-col">
-            <H2 className="mb-4 mx-auto">Professional History</H2>
+            <H1 className="mb-8 mx-auto">Professional History</H1>
             <div className="gap-4 flex flex-col xl:grid xl:grid-cols-5">
               <Timeline data={data} className="col-span-3" />
               <div className="col-span-2 flex flex-col">
@@ -164,8 +166,11 @@ export default function AboutMe() {
       <SectionWithSidebar orientation="left">
         <SidebarBottom icon={<Github />} />
         <SidebarMain classes="overflow-scroll">
-          <div className="flex flex-col">
-            <H2 className="mb-4 mx-auto">My Work</H2>
+          <div className="flex flex-col gap-8">
+            <H1 className="mb-4 mx-auto">My Work</H1>
+            <P>
+              With over eight years of experience in the software engineering landscape, I bring a deep-seated expertise in crafting simple solutions that are maintainable and efficient. 
+            </P>
             <div className="flex mx-auto my-4 github-calendar">
               <GithubActivityCalendar />
             </div>
@@ -174,21 +179,18 @@ export default function AboutMe() {
             <P>
               Having navigated various facets of the software development lifecycle, I’ve honed my ability to design and implement scalable systems that meet the ever-evolving demands of today's digital environment. 
             </P>
-            <P>
-              With over eight years of experience in the software engineering landscape, I bring a deep-seated expertise in crafting simple solutions that are maintainable and efficient. 
-            </P>
             <P>My journey through the world of web technologies and computer science has equipped me with a broad and versatile skill set, allowing me to tackle a diverse range of challenges and deliver impactful results.
             </P>
           </div>
         </SidebarMain>
       </SectionWithSidebar>
     </section>
-    <H2 className="mx-auto">Tech Skills</H2>
+    <H1 className="mx-auto">Tech Skills</H1>
     <Skills />
     <section>
       <SectionWithSidebar orientation="right">
         <SidebarMain>
-          <H2 className="mb-4 mx-auto">Leadership</H2>
+          <H1 className="mb-4 mx-auto">Leadership</H1>
           <SectionWithImageRight
             title="Team Lead"
             image={headshotImg}
@@ -227,7 +229,7 @@ export default function AboutMe() {
         <SidebarMain>
           <div className="flex pb-10">
             <div className="flex flex-col gap-12">
-              <H2 className="mx-auto">Tinkering with my Tools</H2>
+              <H1 className="mx-auto">Tinkering with my Tools</H1>
               <div className="flex justify-around">
                 <Image src="/svgs/Vimlogo.svg" alt="VimLogo" width={100} height={100} />
                 <Image src="/svgs/arch-linux.svg" alt="Operating System" width={100} height={100}/>
@@ -274,7 +276,7 @@ export default function AboutMe() {
       <SectionWithSidebar orientation="left" >
         <SidebarBottom icon={<Printer />} bottomOffset={0} />
         <SidebarMain>
-          <H2 className="mx-auto">Hobbies</H2>
+          <H1 className="mx-auto">Hobbies</H1>
           <SectionWithImageLeft
             title="FPV Drone Freestyle"
             image={fiveInchDroneImg}
@@ -314,7 +316,7 @@ export default function AboutMe() {
       </SectionWithSidebar>
     </section>
     <section>
-      <div className="mx-auto flex flex-col justify-center gap-12 my-20">
+      <div className="mx-auto flex flex-col justify-center gap-12 my-20 text-slate-700">
         <div className="flex mx-auto">
           <H1>Contact Me</H1>
         </div>
@@ -325,7 +327,7 @@ export default function AboutMe() {
             width={200}
             height={200}
             className="mx-auto md:mr-8 mb-auto"
-            style={{ borderRadius: "24px", border: "1px solid black", filter: "drop-shadow(1px 2px 1px #D3D3D3)", objectFit: "cover" }}
+            style={imgStyles}
           />
           <div className="flex flex-col px-4 md:px-0">
             <H3>When you:</H3>
