@@ -39,9 +39,10 @@ section {
 
 /* Mosaic Tile */
 .mosaic-tile {
-  --tile-size: 200px;
-  --tile-md-size: 350px;
-  --tile-lg-size: 450px;
+  --tile-size: 250px;
+  --tile-md-size: 300px;
+  --tile-lg-size: 350px;
+  --tile-xl-size: 450px;
   border:1rem solid theme(colors.yellow.500);
   border-radius: 5rem;
   box-shadow: inset 1px 1px 5px 1px black, 1px 1px 5px 1px black; 
@@ -67,6 +68,10 @@ section {
   @media screen(lg) {
     height: var(--tile-lg-size);
     width: var(--tile-lg-size);
+  }
+  @media screen(xl) {
+    height: var(--tile-xl-size);
+    width: var(--tile-xl-size);
   }
 
   img {
@@ -205,6 +210,12 @@ section {
       width: var(--sidebar-circle-size);
       background-color: white;
       border-radius: 50%;
+      &.is-in-view {
+        svg {
+          fill: theme(colors.yellow.500);
+          filter: drop-shadow(0 0 2rem theme(colors.yellow.500));
+        }
+      }
     }
     svg,
     .sidebar-circle {
@@ -233,12 +244,6 @@ section {
     }
     .sidebar-bottom {
       bottom: calc(var(--sidebar-cap-height) * -1);
-    }
-    &.is-in-view {
-      svg {
-        fill: theme(colors.yellow.500);
-        filter: drop-shadow(0 0 2rem theme(colors.yellow.500));
-      }
     }
   }
 }
@@ -309,3 +314,9 @@ section {
     margin:auto;
   }
 }
+
+/* Img Border */
+.gold-img-border {
+  border: 3px solid theme(colors.yellow.500);
+}
+
