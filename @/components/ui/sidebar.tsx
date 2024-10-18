@@ -8,14 +8,14 @@ type SideBarBaseProps = { icon: ReactElement, bottomOffset?: number };
 type SideBarProps = { cap?: ReactElement } & SideBarBaseProps;
 export const SidebarBase = (props: SideBarProps) =>  {
   const [isInView, setIsInView] = useState(false);
-  return <div className="sidebar">
+  return <div 
+      className={cn("sidebar", isInView ? "is-in-view" : "")}
+      ref={(node) => isInViewportListener(node, () => setIsInView(true), () => setIsInView(false), props.bottomOffset ?? 0)}
+    >
     {props.cap}
     {props.icon} 
     <div className="sidebar-rect"  />
-    <div 
-      className={cn("sidebar-circle", isInView ? "is-in-view" : "")}
-      ref={(node) => isInViewportListener(node, () => setIsInView(true), () => setIsInView(false), props.bottomOffset ?? 0)}
-    />
+    <div className="sidebar-circle" />
   </div>
 }
 

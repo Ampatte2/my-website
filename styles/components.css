@@ -56,7 +56,6 @@ section {
   transition: background-color matrix3d;
   transition-duration: 1s;
   transition-timing-function: ease-in-out;
-  margin: auto;
   height: var(--tile-size);
   width: var(--tile-size);
   z-index: 1;
@@ -210,12 +209,6 @@ section {
       width: var(--sidebar-circle-size);
       background-color: white;
       border-radius: 50%;
-      &.is-in-view {
-        svg {
-          fill: theme(colors.yellow.500);
-          filter: drop-shadow(0 0 2rem theme(colors.yellow.500));
-        }
-      }
     }
     svg,
     .sidebar-circle {
@@ -244,6 +237,12 @@ section {
     }
     .sidebar-bottom {
       bottom: calc(var(--sidebar-cap-height) * -1);
+    }
+    &.is-in-view {
+      svg {
+        fill: theme(colors.yellow.500);
+        filter: drop-shadow(0 0 2rem theme(colors.yellow.500));
+      }
     }
   }
 }

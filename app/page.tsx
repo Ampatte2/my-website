@@ -173,14 +173,14 @@ export default function AboutMe() {
         <SidebarMain classes="overflow-scroll">
           <div className="flex flex-col gap-8">
             <H1 className="mb-4 mx-auto">My Work</H1>
-            <P>
-              With over eight years of experience in software engineering, I bring a deep-seated expertise in crafting simple solutions to complex problems that are maintainable and efficient. 
-            </P>
             <div className="flex mx-auto my-4 github-calendar">
               <GithubActivityCalendar />
             </div>
           </div>
           <div className="flex flex-col gap-8">
+            <P>
+              With over eight years of experience in software engineering, I bring a deep-seated expertise in crafting simple solutions to complex problems that are maintainable and efficient. 
+            </P>
             <P>My journey through the world of web technologies and computer science has equipped me with a broad and versatile skill set, allowing me to tackle a diverse range of challenges and deliver impactful results.
             </P>
             <P>
@@ -227,16 +227,16 @@ export default function AboutMe() {
         <SidebarBottom icon={<Drone />} />
       </SectionWithSidebar>
     </section>
+    <H1 className="mx-auto">Tinkering with my Tools</H1>
+    <div className="flex justify-around mx-auto gap-12">
+      <Image src="/svgs/Vimlogo.svg" alt="VimLogo" width={150} height={150} />
+      <Image src="/svgs/arch-linux.svg" alt="Operating System" width={150} height={150}/>
+      <Image src="/images/moonlander_logo.webp" alt="Moonlander" width={150} height={150} />
+    </div>
     <section>
       <SectionWithSidebar orientation="left">
         <SidebarTop icon={<Toolbox />}  bottomOffset={0}/>
         <SidebarMain>
-          <H1 className="mx-auto">Tinkering with my Tools</H1>
-          <div className="flex justify-around mx-auto gap-12">
-            <Image src="/svgs/Vimlogo.svg" alt="VimLogo" width={150} height={150} />
-            <Image src="/svgs/arch-linux.svg" alt="Operating System" width={150} height={150}/>
-            <Image src="/images/moonlander_logo.webp" alt="Moonlander" width={150} height={150} />
-          </div>
           <SectionWithImageRight
             title="Why stop at an Editor?"
             image={battleStationImg}
