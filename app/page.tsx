@@ -111,7 +111,7 @@ export default function AboutMe() {
 
   return <Column classes="flex flex-col gap-20">
     <section className="px-4 lg:px-10 pt-20">
-      <div className="flex flex-col md:flex-row gap-4 mx-auto justify-center">
+      <div className="flex gap-4 mx-auto justify-center">
         <Image
           src="/images/archery.png"
           alt="archery"
@@ -125,7 +125,7 @@ export default function AboutMe() {
           <H2 className="col-start-2">Software Engineer, UAS Pilot, Tinkerer</H2>
         </div>
       </div>
-      <H3 className="mx-auto text-center py-10">There is no such thing as a problem, only a challenge waiting to be solved.</H3>
+      <H3 className="mx-auto text-center py-4 md:py-10">There is no such thing as a problem, only a challenge waiting to be solved.</H3>
     </section>
     <section>
       <SectionWithSidebar orientation="left">
@@ -228,11 +228,6 @@ export default function AboutMe() {
       </SectionWithSidebar>
     </section>
     <H1 className="mx-auto">Tinkering with my Tools</H1>
-    <div className="flex justify-around mx-auto gap-12">
-      <Image src="/svgs/Vimlogo.svg" alt="VimLogo" width={150} height={150} />
-      <Image src="/svgs/arch-linux.svg" alt="Operating System" width={150} height={150}/>
-      <Image src="/images/moonlander_logo.webp" alt="Moonlander" width={150} height={150} />
-    </div>
     <section>
       <SectionWithSidebar orientation="left">
         <SidebarTop icon={<Toolbox />}  bottomOffset={0}/>
@@ -241,8 +236,11 @@ export default function AboutMe() {
             title="Why stop at an Editor?"
             image={battleStationImg}
           >
-            <H3>My Editor</H3>
-            <div className="flex flex-col gap-4 mb-16">
+            <div className="flex items-center gap-4">
+              <Image src="/svgs/Vimlogo.svg" alt="VimLogo" width={100} height={100} />
+              <H2>My Editor</H2>
+            </div>
+            <div className="flex flex-col gap-4">
               <P>As a junior paired with a developer on my team who used Emacs, and the level of control they had over their editor astounded me. Navigating between files, moving around inside files, text manipulation, and infinite customization. It was clear to me that they were able to iterate significantly faster than I was using vanilla VS Code.</P>
               <P>It wasn't Emacs or Vim that made them efficient, it was their level experience with their editor and their equipment.</P>
               <P>So, since Vim is the lowest common denominator of editors I took the next 6 months learning Vim (Neovim flavor) and a QMK programmable keyboard.</P> 
@@ -251,15 +249,21 @@ export default function AboutMe() {
                 <Anchor href="https://github.com/Ampatte2/dot_files/tree/main/linux-config/nvim" title="Dot Files" className="text-1xl md:text-2xl md:ml-2 tracking-tight" />
               </span>
             </div>
-            <H3>Operating System</H3>
+            <div className="flex items-center gap-4">
+              <Image src="/svgs/arch-linux.svg" alt="Operating System" width={100} height={100}/>
+              <H2>Operating System</H2>
+            </div>
             <div className="flex flex-col gap-4">
               <div className="inline">
                 <P>I've endured the pain of endless configuration files to make "my" operating system. Even a few mistakes along the way, like realizing that I needed to update the location of vmlinuz in the config. Even though my UEFI system recognizes the install location of EFI/boot/bootx86.efi, the OS is looking in /BOOT. </P>
                 <P>Then add in a little unassuming "sudo pacman -Syu", restart, and get stuck at the GRUB bootloader... time to break out the ISO and start seeing where I went wrong.</P>
                 <P>Definitely was a skill issue though.</P>
               </div>
-              <P>Both OS and side project Arch linux has taught me that at the end of the day regardless of what you're working on in software it is always:</P>
-              <P><strong>Data Structures, Directories, and Algorithms</strong></P>
+              <P>Both OS and side project Arch linux has taught me that at the end of the day regardless of what you're working on in software it is always: <strong>Data Structures, Directories, and Algorithms</strong></P>
+            </div>
+            <div className="flex items-center gap-4">
+              <Image src="/images/moonlander_logo.webp" alt="Moonlander" width={100} height={100} />
+              <H3>Keyboard</H3>
             </div>
             <P>Another team member showed me the customizations that the keyboard firmware QMK could provide, and the beauty that is <strong>Layers</strong>.</P>
             <P>Then it got creative, I started experimenting with different seats, different desks, sitting on the ground, sitting on a ball chair, and all gave me issues when trying to code for long stretches (10+ hours).</P>

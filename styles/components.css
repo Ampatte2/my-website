@@ -102,6 +102,7 @@ section {
   --sidebar-icon-size: 5rem;
   --sidebar-icon-half: calc(var(--sidebar-icon-size) / 2);
   --sidebar-cap-height: 7rem;
+  --sidebar-main-padding: 2rem;
   display: flex;
   position: relative;
 
@@ -118,18 +119,12 @@ section {
     display: flex; 
     flex-direction: column;
     gap: 4rem;
-    margin: 10rem auto 0 auto;
     z-index:4;
+    margin: 1rem auto 0 auto;
   }
 
   &.right {
     .sidebar {
-      padding-left: var(--sidebar-rect-width);
-      margin-left: 1rem;
-      @media screen(md) {
-        padding-left: var(--sidebar-circle-size);
-        margin-left: var(--sidebar-offset-size);
-      }
       .sidebar-rect {
         top:0;
         right: 0;
@@ -152,22 +147,10 @@ section {
         right: 0;
       }
     }
-    .sidebar-main {
-      padding-left: 5rem;
-      @media screen (md) {
-        padding-left: var(--sidebar-circle-size);
-      }
-    }
   }
 
   &.left {
     .sidebar {
-      margin-right: 1rem; 
-      padding-right: var(--sidebar-rect-width);
-      @media screen(md) {
-        margin-right: var(--sidebar-offset-size);
-        padding-right: var(--sidebar-circle-size);
-      }
       .sidebar-circle {
         left: var(--sidebar-offset);
         top: calc(50% - var(--sidebar-circle-half));
@@ -181,12 +164,6 @@ section {
       }
       .sidebar-bottom {
         border-radius: 0 0 100% 0;
-      }
-    }
-    .sidebar-main {
-      padding-right: 5rem;
-      @media screen (md) {
-        padding-right: var(--sidebar-circle-size);
       }
     }
   }
@@ -245,6 +222,12 @@ section {
       }
     }
   }
+  .sidebar-main {
+    padding: 0 var(--sidebar-rect-width);
+    @media screen(md) {
+      padding: 0 var(--sidebar-circle-size); 
+    }
+  }
 }
 
 
@@ -257,6 +240,8 @@ section {
   flex-direction: column;
   gap: 4rem;
   padding: 0 0 var(--skill-icon-sizing-md) 0 ;
+  overflow-x: hidden;
+
   @media screen(md) {
     padding: 0 10rem;
   }
