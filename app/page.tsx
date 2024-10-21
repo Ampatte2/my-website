@@ -158,21 +158,13 @@ export default function AboutMe() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col gap-4">
-            <P>
-              Whether collaborating with cross-functional teams or leading projects independently my career has been defined by a relentless pursuit of knowledge and a passion for innovation.
-            </P>
-            <P>
-              My approach combines a rigorous understanding of core computer science principles with a hands-on, problem-solving mindset. 
-            </P>
-          </div>
         </SidebarMain>
       </SectionWithSidebar>
       <SectionWithSidebar orientation="left">
         <SidebarBottom icon={<Github />} />
         <SidebarMain classes="overflow-scroll">
           <div className="flex flex-col gap-8">
-            <H1 className="mb-4 mx-auto">My Work</H1>
+            <H1 className="mx-auto">My Work</H1>
             <div className="flex mx-auto my-4 github-calendar">
               <GithubActivityCalendar />
             </div>
@@ -195,11 +187,14 @@ export default function AboutMe() {
     <section>
       <SectionWithSidebar orientation="right">
         <SidebarMain>
-          <H1 className="mb-4 mx-auto">Leadership</H1>
+          <H1 className="mx-auto">Leadership</H1>
           <SectionWithImageRight
             title="Team Lead"
             image={headshotImg}
           >
+            <P>
+              Whether collaborating with cross-functional teams or leading projects independently my career has been defined by a relentless pursuit of knowledge and a passion for innovation.
+            </P>
             <P>As a junior level developer I quickly learned and built upon the patterns that existed in the codebase. Within a year I was knowledgable enough to teach other juniors and was promoted to team lead.</P>
           </SectionWithImageRight>
           <SectionWithImageLeft
@@ -238,7 +233,7 @@ export default function AboutMe() {
           >
             <div className="flex items-center gap-4">
               <Image src="/svgs/Vimlogo.svg" alt="VimLogo" width={100} height={100} />
-              <H2>My Editor</H2>
+              <H2>My Editor: </H2>
             </div>
             <div className="flex flex-col gap-4">
               <P>As a junior paired with a developer on my team who used Emacs, and the level of control they had over their editor astounded me. Navigating between files, moving around inside files, text manipulation, and infinite customization. It was clear to me that they were able to iterate significantly faster than I was using vanilla VS Code.</P>
@@ -249,31 +244,33 @@ export default function AboutMe() {
                 <Anchor href="https://github.com/Ampatte2/dot_files/tree/main/linux-config/nvim" title="Dot Files" className="text-1xl md:text-2xl md:ml-2 tracking-tight" />
               </span>
             </div>
-            <div className="flex items-center gap-4">
-              <Image src="/svgs/arch-linux.svg" alt="Operating System" width={100} height={100}/>
-              <H2>Operating System</H2>
-            </div>
-            <div className="flex flex-col gap-4">
-              <div className="inline">
-                <P>I've endured the pain of endless configuration files to make "my" operating system. Even a few mistakes along the way, like realizing that I needed to update the location of vmlinuz in the config. Even though my UEFI system recognizes the install location of EFI/boot/bootx86.efi, the OS is looking in /BOOT. </P>
-                <P>Then add in a little unassuming "sudo pacman -Syu", restart, and get stuck at the GRUB bootloader... time to break out the ISO and start seeing where I went wrong.</P>
-                <P>Definitely was a skill issue though.</P>
-              </div>
-              <P>Both OS and side project Arch linux has taught me that at the end of the day regardless of what you're working on in software it is always: <strong>Data Structures, Directories, and Algorithms</strong></P>
-            </div>
-            <div className="flex items-center gap-4">
-              <Image src="/images/moonlander_logo.webp" alt="Moonlander" width={100} height={100} />
-              <H3>Keyboard</H3>
-            </div>
-            <P>Another team member showed me the customizations that the keyboard firmware QMK could provide, and the beauty that is <strong>Layers</strong>.</P>
-            <P>Then it got creative, I started experimenting with different seats, different desks, sitting on the ground, sitting on a ball chair, and all gave me issues when trying to code for long stretches (10+ hours).</P>
-            <P>After a couple iterations I thought to myself "What is the most comfortable chair?" A zero gravity recliner of course! Then it all came together with my lounge chair, split keyboard, and a PVC frame for the monitor to keep it at a good distance above my head.</P>
-            <P>Next iteration will remove the PVC with a more permanent, and a better way to get in and out. Right now I kind of slink out to the side.</P>
-            <span className="flex flex-col md:flex-row text-xl">
-              <H4>Check out my Keyboard Layout</H4>
-              <Anchor href="https://configure.zsa.io/moonlander/layouts/Rgmyl/5Dw66/0" title="You Only Need 38" className="text-1xl md:text-2xl md:ml-2 tracking-tight"/>
-            </span>
           </SectionWithImageRight>
+          <div className="flex flex-col xl:grid xl:grid-cols-2 gap-8 mb-8">
+            <div className="flex flex-col gap-8">
+              <div className="flex items-center gap-4">
+                <Image src="/svgs/arch-linux.svg" alt="Operating System" width={100} height={100}/>
+                <H2>Operating System: Arch</H2>
+              </div>
+                  <P>I've endured the pain of endless configuration files to make <i>my</i> operating system. Even a few mistakes along the way, like realizing that I needed to update the location of vmlinuz in the config. Even though my UEFI system recognizes the install location of <b>EFI/boot/bootx86.efi</b>, the OS is looking in <b>/BOOT.</b> </P>
+                  <P>Then add in a little unassuming <b>sudo pacman -Syu</b>, restart, and get stuck at the GRUB bootloader... time to break out the ISO and start seeing where I went wrong.</P>
+                  <P>Definitely was a skill issue though.</P>
+                <P>Both OS and side project Arch linux has taught me that at the end of the day regardless of what you're working on in software it is always: <strong>Data Structures, Directories, and Algorithms</strong></P>
+            </div>
+            <div className="flex flex-col gap-8">
+              <div className="flex items-center gap-4">
+                <Image src="/images/moonlander_logo.webp" alt="Moonlander" width={100} height={100} />
+                <H2>Keyboard: Moonlander</H2>
+              </div>
+              <P>Another team member showed me the customizations that the keyboard firmware QMK could provide, and the beauty that is <strong>Layers</strong>.</P>
+              <P>Then it got creative, I started experimenting with different seats, different desks, sitting on the ground, sitting on a ball chair, and all gave me issues when trying to code for long stretches (10+ hours).</P>
+              <P>After a couple iterations I thought to myself "What is the most comfortable chair?" A zero gravity recliner of course! Then it all came together with my lounge chair, split keyboard, and a PVC frame for the monitor to keep it at a good distance above my head.</P>
+              <P>Next iteration will remove the PVC with a more permanent, and a better way to get in and out. Right now I kind of slink out to the side.</P>
+              <span className="flex flex-col md:flex-row text-xl">
+                <H4>Check out my Keyboard Layout</H4>
+                <Anchor href="https://configure.zsa.io/moonlander/layouts/Rgmyl/5Dw66/0" title="You Only Need 38" className="text-1xl md:text-2xl md:ml-2 tracking-tight"/>
+              </span>
+            </div>
+          </div>
         </SidebarMain>
       </SectionWithSidebar >
       <SectionWithSidebar orientation="left" >

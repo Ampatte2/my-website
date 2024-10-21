@@ -105,6 +105,11 @@ section {
   --sidebar-main-padding: 2rem;
   display: flex;
   position: relative;
+  padding: 0 var(--sidebar-rect-width);
+
+  @media screen(md) {
+    padding: 0 var(--sidebar-circle-size); 
+  }
 
   .sidebar-circle {
     z-index: 2;
@@ -119,24 +124,26 @@ section {
     display: flex; 
     flex-direction: column;
     gap: 4rem;
-    z-index:4;
     margin: 1rem auto 0 auto;
+    z-index:4;
   }
 
   &.right {
     .sidebar {
+      top: 0;
+      right: 0;
       .sidebar-rect {
         top:0;
         right: 0;
         position: absolute;
       } 
       .sidebar-circle {
-        left: var(--sidebar-offset);
+        right: var(--sidebar-offset);
         top: calc(50% - var(--sidebar-circle-half));
       }
       svg {
         top: calc(50% - var(--sidebar-icon-half));
-        left: calc(var(--sidebar-offset) + var(--sidebar-icon-half));
+        right: calc(var(--sidebar-offset) + var(--sidebar-icon-half));
       }
       .sidebar-top {
         border-radius: 100% 0  0  0 ;
@@ -151,6 +158,8 @@ section {
 
   &.left {
     .sidebar {
+      top: 0;
+      left: 0;
       .sidebar-circle {
         left: var(--sidebar-offset);
         top: calc(50% - var(--sidebar-circle-half));
@@ -169,8 +178,8 @@ section {
   }
 
   .sidebar {
-    height: auto;
-    position: relative;
+    height: 100%;
+    position:absolute;
     width: var(--sidebar-rect-width);
 
     .sidebar-rect {
@@ -223,10 +232,6 @@ section {
     }
   }
   .sidebar-main {
-    padding: 0 var(--sidebar-rect-width);
-    @media screen(md) {
-      padding: 0 var(--sidebar-circle-size); 
-    }
   }
 }
 
