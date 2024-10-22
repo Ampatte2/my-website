@@ -106,6 +106,7 @@ section {
   display: flex;
   position: relative;
   padding: 0 var(--sidebar-rect-width);
+  flex-direction:column;
 
   @media screen(md) {
     padding: 0 var(--sidebar-circle-size); 
@@ -124,8 +125,46 @@ section {
     display: flex; 
     flex-direction: column;
     gap: 4rem;
-    margin: 1rem auto 0 auto;
     z-index:4;
+    .section-with {
+      display: flex;
+      flex-direction: row;
+      gap: 3rem;
+    }
+    &.xl {
+      display: flex;
+      flex-direction: column;
+      @media screen(max) {
+        gap: 3rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .section-with {
+        display: flex;
+        flex-direction: column;
+        margin: 0.5rem 0 0 0;
+        .mosaic-tile {
+          margin: 0 auto;
+        }
+        @media screen(md) {
+          gap: 3rem;
+          flex-direction: row;
+        }
+
+        &.left {
+          @media screen(xl) {
+            gap: 3rem;
+            flex-direction: row;
+          }
+        } 
+        &.right {
+          @media screen(xl) {
+            gap: 3rem;
+            flex-direction: row-reverse;
+          }
+        }
+      }
+    } 
   }
 
   &.right {
@@ -231,10 +270,11 @@ section {
       }
     }
   }
-  .sidebar-main {
-  }
 }
 
+.sidebar-section:nth-of-type(2) {
+  padding-top: 10rem;
+}
 
 /* Skills */
 .skills-container {

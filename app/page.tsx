@@ -75,30 +75,36 @@ const Timeline = (props: TimelineProps) => (
 
 const imgStyles = { borderRadius: "24px", filter: "drop-shadow(2px 3px 2px #D3D3D3)", objectFit: "cover" } as const;
 
-const SectionWithSidebar = (props: PropsWithChildren<{orientation: "left" | "right", classes?: ClassValue}>) => <div className={cn("sidebar-section", props.orientation, props.classes)}>{props.children}</div>
+type OrientationU = "left" | "right";
 
-const SectionWith = (props: PropsWithChildren<{ title: string }>) => 
+const SectionWithSidebar = (props: PropsWithChildren<{orientation: OrientationU, classes?: ClassValue}>) => <div className={cn("sidebar-section", props.orientation, props.classes)}>{props.children}</div>
+
+type SectionWithProps = { title: string };
+
+const SectionWith = (props: PropsWithChildren<SectionWithProps & {orientation:  OrientationU}>) => 
   <div className="flex flex-col">
     <H3 className="mx-auto mb-4">{props.title}</H3>
-    <div className="flex flex-col gap-8 lg:flex-row lg:gap-20 mt-8">
+    <div className={cn("section-with", props.orientation)}>
       {props.children}
     </div>
   </div>
 
-const SectionWithImageLeft = (props: PropsWithChildren<{title: string, image: StaticImageData}>) => 
-  <SectionWith title={props.title}>
-    <Tile image={props.image} />
+type SectionWithImageProps = SectionWithProps & { image: StaticImageData}
+
+const SectionWithImageLeft = (props: PropsWithChildren<SectionWithImageProps>) => 
+  <SectionWith title={props.title} orientation="left">
+    <Tile image={props.image} classes="mr-auto" />
     <div className="flex flex-col gap-4">
       {props.children}
     </div>
   </SectionWith>
 
-const SectionWithImageRight = (props: PropsWithChildren<{title: string, image: StaticImageData}>) => 
-  <SectionWith title={props.title}>
+const SectionWithImageRight = (props: PropsWithChildren<SectionWithImageProps>) => 
+  <SectionWith title={props.title} orientation="right">
     <div className="flex flex-col gap-4">
       {props.children}
     </div>
-    <Tile image={props.image} />
+    <Tile image={props.image} classes="ml-auto"/>
   </SectionWith>
 
 const data = [
@@ -163,21 +169,22 @@ export default function AboutMe() {
       <SectionWithSidebar orientation="left">
         <SidebarBottom icon={<Github />} />
         <SidebarMain classes="overflow-scroll">
-          <div className="flex flex-col gap-8">
-            <H1 className="mx-auto">My Work</H1>
-            <div className="flex mx-auto my-4 github-calendar">
-              <GithubActivityCalendar />
-            </div>
+          <H1 className="mx-auto">My Work</H1>
+          <div className="flex mx-auto my-4 github-calendar">
+            <GithubActivityCalendar />
           </div>
           <div className="flex flex-col gap-8">
+            <P>I’ve honed my ability to design and implement scalable systems that meet the ever-evolving demands of my organization. </P>
             <P>
               With over eight years of experience in software engineering, I bring a deep-seated expertise in crafting simple solutions to complex problems that are maintainable and efficient. 
             </P>
             <P>My journey through the world of web technologies and computer science has equipped me with a broad and versatile skill set, allowing me to tackle a diverse range of challenges and deliver impactful results.
             </P>
-            <P>
-              I’ve honed my ability to design and implement scalable systems that meet the ever-evolving demands of my organization. 
-            </P>
+            <OL className="text-2xl ml">
+              <li>Designed and implemented custom SSR Tmux Scala Webserver config to facilitate easier starting of entire application after the addition of the SSR server that used a bash script to launch everything with long opts.</li>
+              <li>Charged with taking a new hire from zero to hero. There was an individual that only knew a cursory knowledge of python scripting and I taught him everything about web dev. In a couple of months he was an individual contributor</li>
+              <li>I was instrumental in a new implementation with a headless CMS/no code solution that enabled marketing to update our corporate site without spending engineerings hours. This involved importing our component library into the CMS then re-exporting the assets from the CMS to use on the corporate site. The final result was a blend of the two libraries that was compiled via SSG.</li>
+            </OL>
           </div>
         </SidebarMain>
       </SectionWithSidebar>
@@ -186,8 +193,8 @@ export default function AboutMe() {
     <Skills />
     <section>
       <SectionWithSidebar orientation="right">
-        <SidebarMain>
-          <H1 className="mx-auto">Leadership</H1>
+        <H1 className="mx-auto">Leadership</H1>
+        <SidebarMain collapse="xl">
           <SectionWithImageRight
             title="Team Lead"
             image={headshotImg}
@@ -208,16 +215,23 @@ export default function AboutMe() {
         <SidebarTop icon={<EagleScout />} />
       </SectionWithSidebar>
       <SectionWithSidebar orientation="right">
-        <SidebarMain>
+        <SidebarMain collapse="xl">
           <SectionWithImageRight
             title="UAS Pilot Part 107 Licensed"
             image={openDroneImg}
           >
-            <P>I am commercially licensed to fly drones.</P> 
-            <P>They are custom built from my own designs which I solder together, assemble the frame, and flash/configure the firmware.</P>
+            <P>Custom built from my own designs which I solder together, assemble the frame, and flash/configure the firmware.</P>
             <P>The moments that you get to fly are amazing, but the real meat and potatoes comes from crashing and building them. The <strong>best</strong> problems come from working on embedded systems. Having the physical component cost of "just trying it out" forces you to become creative and try different solutions</P>
             <P>The drones are programmed with Betaflight for it's freestyle performance, the gear is: ImmersionRC with HDO2.1 goggles and ELRS Radiomaster Boxer</P>
           </SectionWithImageRight>
+          <SectionWithImageLeft
+            title="FPV Drone Freestyle"
+            image={fiveInchDroneImg}
+          >
+            <P>The freedom of 360 degree movement, feeling like you are right there in the action, and the harmony of multiple pieces of technology working in concert are just a few reasons I love drones.</P>
+            <P>I have 3 different drones, the one in the photo is a 5 inch quad with 60 amp ESCs and massive 2406 stator / 2450 KV motors running 6s. It's a monster that is a lord of the sky.</P>
+            <P> To round out the fleet I have a nimble 4 inch quad 4-6s and a little tiny 65mm racing quad that I toot around inside with.</P>
+          </SectionWithImageLeft>
         </SidebarMain>
         <SidebarBottom icon={<Drone />} />
       </SectionWithSidebar>
@@ -275,15 +289,14 @@ export default function AboutMe() {
       </SectionWithSidebar >
       <SectionWithSidebar orientation="left" >
         <SidebarBottom icon={<Printer />} bottomOffset={0} />
-        <SidebarMain>
-          <H1 className="mx-auto">Hobbies</H1>
+        <H1 className="mx-auto">Hobbies</H1>
+        <SidebarMain collapse="xl">
           <SectionWithImageLeft
-            title="FPV Drone Freestyle"
-            image={fiveInchDroneImg}
+            title="3D Printing"
+            image={printerImg}
           >
-            <P>The freedom of 360 degree movement, feeling like you are right there in the action, and the harmony of multiple pieces of technology working in concert are just a few reasons I love drones.</P>
-            <P>I have 3 different drones, the one in the photo is a 5 inch quad with 60 amp ESCs and massive 2406 stator / 2450 KV motors running 6s. It's a monster that is a lord of the sky.</P>
-            <P> To round out the fleet I have a nimble 4 inch quad 4-6s and a little tiny 65mm racing quad that I toot around inside with.</P>
+            <P>When they break I use my SLA 3D Printer to replace bespoke pieces of plastic and get back up in the air.</P>
+            <P>I can build and design parts from scratch using programs like Fusion 360 or Blender. These programs have taught me about the different ways that you can go about creating 3D objects and manipulating them.</P>
           </SectionWithImageLeft>
           <SectionWithImageRight
             title="Dante Dog"
@@ -298,19 +311,12 @@ export default function AboutMe() {
             <P>After working on a computer all day with it's infinite problems, it's nice to sit back and just do one thing at a time. Plants are fairly simple in that way, they take a while to change and you should not change them too quickly or often.</P>
           </SectionWithImageLeft>
           <SectionWithImageRight
-            title="3D Printing"
-            image={printerImg}
-          >
-            <P>Fun hobby that I occasionally use to replace bespoke pieces of plastic that are non-functional.</P>
-            <P>I can build and design parts from scratch using programs like Fusion 360 or Blender. These programs have taught me about the different ways that you can go about creating 3D objects and manipulating them.</P>
-          </SectionWithImageRight>
-          <SectionWithImageLeft
             title="Outdoors"
             image={campfireMeImg}
           >
             <P>The outdoors is where it is at, I am an avid backpacker, camper, hiker.</P>
             <P>Usually you can find me off exploring some unmarked trail or figuring out how to get to the top of the next mountain.</P>
-          </SectionWithImageLeft>
+          </SectionWithImageRight>
         </SidebarMain>
       </SectionWithSidebar>
     </section>
