@@ -83,7 +83,7 @@ type SectionWithProps = { title: string };
 
 const SectionWith = (props: PropsWithChildren<SectionWithProps & {orientation:  OrientationU}>) => 
   <div className="flex flex-col">
-    <H3 className="mx-auto mb-4">{props.title}</H3>
+    <H2 className="mx-auto mb-16">{props.title}</H2>
     <div className={cn("section-with", props.orientation)}>
       {props.children}
     </div>
@@ -93,18 +93,18 @@ type SectionWithImageProps = SectionWithProps & { image: StaticImageData}
 
 const SectionWithImageLeft = (props: PropsWithChildren<SectionWithImageProps>) => 
   <SectionWith title={props.title} orientation="left">
-    <Tile image={props.image} classes="mr-auto" />
-    <div className="flex flex-col gap-4">
+    <Tile image={props.image} classes="mr-auto order-first max:order-none" />
+    <div className="flex flex-col gap-4 order-last max:order-none">
       {props.children}
     </div>
   </SectionWith>
 
 const SectionWithImageRight = (props: PropsWithChildren<SectionWithImageProps>) => 
   <SectionWith title={props.title} orientation="right">
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 order-last max:order-none">
       {props.children}
     </div>
-    <Tile image={props.image} classes="ml-auto"/>
+    <Tile image={props.image} classes="ml-auto order-first max:order-none"/>
   </SectionWith>
 
 const data = [
@@ -116,32 +116,32 @@ const data = [
 export default function AboutMe() {
 
   return <Column classes="flex flex-col gap-20">
-    <section className="px-4 lg:px-10 pt-20">
-      <div className="flex gap-4 mx-auto justify-center">
+    <section className="flex flex-col px-4 lg:px-10 pt-20" aria-label="Andrew Patterson Intro Title">
+      <div className="flex lg:flex-col text-center gap-8 my-auto mx-auto relative items-center">
         <Image
           src="/images/archery.png"
           alt="archery"
           width={150}
           height={150}
           style={imgStyles}
-          className="gold-img-border"
+          className="gold-img-border lg:absolute -top-8 -left-40"
         />
-        <div className="flex flex-col text-center my-auto">
-          <H1 className="md:ml-2">Andrew M. Patterson</H1>
-          <H2 className="col-start-2">Software Engineer, UAS Pilot, Tinkerer</H2>
+        <div>
+          <H1>Andrew M. Patterson</H1>
+          <H2>Software Engineer, UAS Pilot, Tinkerer</H2>
         </div>
       </div>
-      <H3 className="mx-auto text-center py-4 md:py-10">There is no such thing as a problem, only a challenge waiting to be solved.</H3>
+      <H3 className="mx-auto text-center my-8 md:my-20">There is no such thing as a problem, only a challenge waiting to be solved.</H3>
     </section>
-    <section>
+    <section aria-label="Professional History and Work Summary">
       <SectionWithSidebar orientation="left">
         <SidebarTop icon={<DesktopComp />} />
+        <H1 className="mb-8 mx-auto">Professional History</H1>
         <SidebarMain> 
           <div className="flex flex-col">
-            <H1 className="mb-8 mx-auto">Professional History</H1>
-            <div className="gap-4 flex flex-col xl:grid xl:grid-cols-5">
-              <Timeline data={data} className="col-span-3" />
-              <div className="col-span-2 flex flex-col">
+            <div className="gap-4 flex flex-col xl:grid xl:grid-cols-2">
+              <Timeline data={data} />
+              <div className="flex flex-col">
                 <H3 className="my-8">Summary</H3>
                 <div className="flex flex-col gap-4">
                   <P>
@@ -168,32 +168,31 @@ export default function AboutMe() {
       </SectionWithSidebar>
       <SectionWithSidebar orientation="left">
         <SidebarBottom icon={<Github />} />
+        <H1 className="mx-auto mb-8">My Work</H1>
         <SidebarMain classes="overflow-scroll">
-          <H1 className="mx-auto">My Work</H1>
-          <div className="flex mx-auto my-4 github-calendar">
-            <GithubActivityCalendar />
-          </div>
           <div className="flex flex-col gap-8">
-            <P>I’ve honed my ability to design and implement scalable systems that meet the ever-evolving demands of my organization. </P>
-            <P>
-              With over eight years of experience in software engineering, I bring a deep-seated expertise in crafting simple solutions to complex problems that are maintainable and efficient. 
+            <P>I’ve honed my ability to design and implement scalable systems that meet the ever-evolving demands of my organization. With over eight years of experience in software engineering, I bring a deep-seated expertise in crafting simple solutions to complex problems that are maintainable and efficient. 
             </P>
             <P>My journey through the world of web technologies and computer science has equipped me with a broad and versatile skill set, allowing me to tackle a diverse range of challenges and deliver impactful results.
             </P>
-            <OL className="text-2xl ml">
+            <GithubActivityCalendar />
+            <H3 className="mx-auto mb-4">Notable Achievements</H3>
+            <OL gap={8}>
               <li>Designed and implemented custom SSR Tmux Scala Webserver config to facilitate easier starting of entire application after the addition of the SSR server that used a bash script to launch everything with long opts.</li>
-              <li>Charged with taking a new hire from zero to hero. There was an individual that only knew a cursory knowledge of python scripting and I taught him everything about web dev. In a couple of months he was an individual contributor</li>
+              <li>Training a new hire from zero web skills to individual contributor. There was a team mate that was hired on his potential. They knew about python scripting and tinkering with QMK firmware for mechanical keyboards. In addition to my daily duties I met with him and gave him lessons for a couple of months until, reviewed his work.</li>
               <li>I was instrumental in a new implementation with a headless CMS/no code solution that enabled marketing to update our corporate site without spending engineerings hours. This involved importing our component library into the CMS then re-exporting the assets from the CMS to use on the corporate site. The final result was a blend of the two libraries that was compiled via SSG.</li>
             </OL>
           </div>
         </SidebarMain>
       </SectionWithSidebar>
     </section>
-    <H1 className="mx-auto">Tech Skills</H1>
-    <Skills />
-    <section>
+    <section className="flex flex-col gap-12" aria-label="Tech Skills">
+      <H1 className="mx-auto">Tech Skills</H1>
+      <Skills />
+    </section>
+    <section aria-label="Leadership UAS Pilot and Freestyle Drone">
       <SectionWithSidebar orientation="right">
-        <H1 className="mx-auto">Leadership</H1>
+        <H1 className="mx-auto mb-8">Leadership</H1>
         <SidebarMain collapse="xl">
           <SectionWithImageRight
             title="Team Lead"
@@ -236,13 +235,12 @@ export default function AboutMe() {
         <SidebarBottom icon={<Drone />} />
       </SectionWithSidebar>
     </section>
-    <H1 className="mx-auto">Tinkering with my Tools</H1>
     <section>
       <SectionWithSidebar orientation="left">
         <SidebarTop icon={<Toolbox />}  bottomOffset={0}/>
         <SidebarMain>
           <SectionWithImageRight
-            title="Why stop at an Editor?"
+            title="Tinkering with my Tools"
             image={battleStationImg}
           >
             <div className="flex items-center gap-4">
@@ -289,20 +287,21 @@ export default function AboutMe() {
       </SectionWithSidebar >
       <SectionWithSidebar orientation="left" >
         <SidebarBottom icon={<Printer />} bottomOffset={0} />
-        <H1 className="mx-auto">Hobbies</H1>
         <SidebarMain collapse="xl">
           <SectionWithImageLeft
             title="3D Printing"
             image={printerImg}
           >
-            <P>When they break I use my SLA 3D Printer to replace bespoke pieces of plastic and get back up in the air.</P>
-            <P>I can build and design parts from scratch using programs like Fusion 360 or Blender. These programs have taught me about the different ways that you can go about creating 3D objects and manipulating them.</P>
+            <P>Started with an Ender 5 Pro and now using Resin SLA 3D Printer to replace bespoke pieces of plastic and make compliant mechanisms.</P>
+            <P>I love building and designing parts from scratch using programs like Fusion 360 or Blender. These programs have taught me about the different ways that you can go about creating 3D objects and manipulating them.</P>
+            <P>I prefer Blender's approach that you perform mathematical operations like unions to achieve the final result, whereas Fusion thinks of objects that can be connected and sculpted.</P>
           </SectionWithImageLeft>
           <SectionWithImageRight
             title="Dante Dog"
             image={danteImg}
           >
-            <P>This is my boy we hang out and do just about everything together. He's a four year old Border Collie Corgi mixed breed, he loves running and eating all the food he can find or coerce out of me with those puppy dog eyes.</P>
+            <P>This is my boy we hang out and do just about everything together.</P>
+            <P>He's a four year old Border Collie Corgi mixed breed, he loves running and eating all the food he can find or coerce out of me with those puppy dog eyes.</P>
           </SectionWithImageRight>
           <SectionWithImageLeft
             title="Gardening"
@@ -321,7 +320,7 @@ export default function AboutMe() {
       </SectionWithSidebar>
     </section>
     <section>
-      <div className="mx-auto flex flex-col justify-center gap-12 my-20 text-slate-700">
+      <div className="mx-8 flex flex-col justify-center gap-12 my-20 text-slate-700">
         <div className="flex mx-auto">
           <H1>Contact Me</H1>
         </div>
@@ -329,14 +328,14 @@ export default function AboutMe() {
           <Image
             src="/images/snow_me.png"
             alt="archery"
-            width={200}
-            height={200}
+            width={225}
+            height={225}
             className="mx-auto md:mr-8 mb-auto gold-img-border"
             style={imgStyles}
           />
           <div className="flex flex-col px-4 md:px-0">
             <H3>When you:</H3>
-            <OL className="text-2xl ml">
+            <OL className="text-2xl mt-4" gap={4}>
               <li>Have a project that needs to be built.</li>
               <li>A wild idea that needs a duck.</li>
               <li>Want to fly a drone.</li>

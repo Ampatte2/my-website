@@ -7,5 +7,6 @@ export const H2 = (props: PropsWithChildren<ClassProp>) => <h2 className={cn("te
 export const H3 = (props: PropsWithChildren<ClassProp>) => <h3 className={cn("text-2xl lg:text-3xl font-semibold tracking-tight", props.className)}>{props.children}</h3>
 export const H4 = (props: PropsWithChildren<ClassProp>) => <h4 className={cn("text-1xl lg:text-2xl font-semibold tracking-tight", props.className)}>{props.children}</h4>
 export const P = (props: PropsWithChildren<ClassProp>) => <p className={cn("leading-7", "text-1xl lg:text-2xl", props.className)}>{props.children}</p>
-export const OL = (props: PropsWithChildren<ClassProp>) => <ol className={cn("ml-6 list-disc [&>li]:mt-2", props.className)}>{props.children}</ol>
+export const OL = (props: PropsWithChildren<ClassProp & {gap: number}>) => 
+  <ol className={cn(`text-1xl lg:text-2xl tracking-tight flex flex-col ml-6 list-disc gap-${props.gap}`, props.className)}>{props.children}</ol>
 

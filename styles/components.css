@@ -105,13 +105,12 @@ section {
   --sidebar-main-padding: 2rem;
   display: flex;
   position: relative;
-  padding: 0 var(--sidebar-rect-width);
+  padding: 0 calc(var(--sidebar-rect-width) + 1rem);
   flex-direction:column;
 
-  @media screen(md) {
+  @media screen(lg) {
     padding: 0 var(--sidebar-circle-size); 
   }
-
   .sidebar-circle {
     z-index: 2;
   }
@@ -146,7 +145,7 @@ section {
         .mosaic-tile {
           margin: 0 auto;
         }
-        @media screen(md) {
+        @media screen(lg) {
           gap: 3rem;
           flex-direction: row;
         }
@@ -238,7 +237,7 @@ section {
     svg,
     .sidebar-circle {
       display: none;
-      @media screen(md) {
+      @media screen(lg) {
         display: block;
       }
     }
@@ -281,6 +280,7 @@ section {
   --skill-icon-sizing-md: 3rem;
   --skill-icon-sizing: 5rem;
   --skill-icon-sizing-xl: 7rem;
+  --skill-icon-sizing-max: 10rem;
   display: flex;
   flex-direction: column;
   gap: 4rem;
@@ -306,6 +306,10 @@ section {
     @media screen(xl) {
       height: var(--skill-icon-sizing-xl);
       width: var(--skill-icon-sizing-xl);
+    }
+    @media screen(max) {
+      height: var(--skill-icon-sizing-max);
+      width: var(--skill-icon-sizing-max);
     }
     filter: drop-shadow(1px 3px 2px #D3D3D3);
   }
@@ -336,11 +340,13 @@ section {
 }
 
 /* Calendar */
-.github-calendar {
-  overflow-x: hidden;
-  width: 80vw;
-  .react-activity-calendar {
-    margin:auto;
+.react-activity-calendar {
+  margin: 1rem auto;
+  @media screen(md) {
+    margin: 4rem auto;
+  }
+  .react-activity-calendar__scroll-container {
+    overflow: visible;
   }
 }
 
