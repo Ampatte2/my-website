@@ -157,7 +157,7 @@ export default function AboutMe() {
                     The latest opportunity was a Municipal Bond startup. Within a year they saw my value and I was offered a promotion with extra responsibilities. Then when the company hired I was promoted a leadership role.
                   </P>
                   <P>
-                    As Team Lead I was put in charge of managing the Core Epic which comprised of maintenance, bug fixes, and small feature requests.
+                    As Team Lead I was put in charge of managing the Core Epic which comprised of maintenance, bug fixes, and feature requests.
                   </P>
                 </div>
               </div>
@@ -170,7 +170,7 @@ export default function AboutMe() {
         <H1 className="mx-auto mb-8">My Work</H1>
         <SidebarMain classes="overflow-scroll">
           <OL gap={8}>
-            <li>The company had implemented a hand rolled SSR server. This meant that in additon to launching our Scala webserver we also had to lanuch the SSR server in order for the application to run. I worked with my manager to design a custom Tmux config which I implemented in bash script which would launch everything into an Apple Iterm window using Applescript long opts to either instantly run or load up the window.</li>
+            <li>The company had implemented a hand rolled SSR server. This meant that in addition to launching our Scala webserver we also had to  the SSR server in order for the application to run. I worked with my manager to design a custom Tmux config which I implemented in bash script which would launch everything into an Apple Iterm window using Applescript long opts to either instantly run or load up the window.</li>
             <li>There is a saying "If you can't explain it simply, you don't understand it well enough". I think this is why I've always jumped on mentorship opportunities. My most notable mentorship was a new hire with a bit of python knowledge and zero web skills. It turns out I could explain it simply enough to get him up to speed in no time, and after many lessons, questions, and PR comments he became an individual contributor in his own right.</li>
             <li>
               <div>
@@ -272,7 +272,7 @@ export default function AboutMe() {
                   <P>I've endured the pain of endless configuration files to make <i>my</i> operating system. Even a few mistakes along the way, like realizing that I needed to update the location of vmlinuz in the config. Even though my UEFI system recognizes the install location of <b>EFI/boot/bootx86.efi</b>, the OS is looking in <b>/BOOT.</b> </P>
                   <P>Then add in a little unassuming <b>sudo pacman -Syu</b>, restart, and get stuck at the GRUB bootloader... time to break out the ISO and start seeing where I went wrong.</P>
                   <P>Definitely was a skill issue though.</P>
-                <P>Both OS and side project Arch linux has taught me that at the end of the day regardless of what you're working on in software it is always: <strong>Data Structures, Directories, and Algorithms</strong></P>
+                <P>Both OS and side project Arch Linux has taught me that at the end of the day regardless of what you're working on in software it is always: <strong>Data Structures, Directories, and Algorithms</strong></P>
             </div>
             <div className="flex flex-col gap-8">
               <div className="flex items-center gap-4">
