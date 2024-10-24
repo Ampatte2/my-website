@@ -108,13 +108,12 @@ const SectionWithImageRight = (props: PropsWithChildren<SectionWithImageProps>) 
   </SectionWith>
 
 const data = [
-  { startDate: new Date('2018 01 01'), endDate: new Date('2019 06 01'), title: 'Procleos Labs', content: 'Trading application that was focused on individual investors.' },
-  { startDate: new Date('2019 09 01'), endDate: new Date('2021 05 01'), title: 'Cheaper Eats', content: 'Cross platform application to service restaurants ordering and back office software.' },
-  { startDate: new Date('2021 05 '), endDate: new Date(), title: 'Bondlink', content: 'Front end and back end for municipalities to manage and disseminate information about Bond Sales and their communities.' },
+  { startDate: new Date('2018 01 01'), endDate: new Date('2019 06 01'), title: 'Procleos Labs', content: 'Securities and Crypto trading application' },
+  { startDate: new Date('2019 09 01'), endDate: new Date('2021 05 01'), title: 'Cheaper Eats', content: 'Cross platform application for restaurants ordering and back office software.' },
+  { startDate: new Date('2021 05 '), endDate: new Date(), title: 'Bondlink', content: 'Public facing site disseminate information about Bond Sales and their communities and a user portal to manange the content' },
 ];
 
 export default function AboutMe() {
-
   return <Column classes="flex flex-col gap-20">
     <section className="flex flex-col px-4 lg:px-10 pt-20" aria-label="Andrew Patterson Intro Title">
       <div className="flex flex-col text-center gap-8 my-auto mx-auto relative items-center">
@@ -145,20 +144,20 @@ export default function AboutMe() {
                 <H3 className="my-8">Summary</H3>
                 <div className="flex flex-col gap-4">
                   <P>
-                    I have always wanted to help people and I thought my passion was psychiatry. However, after getting straight A's in pre-med classes I realized that wasn't for me. People are challenging, but I determined that people themselves are the only ones who can fix themselves.
+                    In school I was studying to be a medical doctor specializing in psychology. I have always had a passion for fixing and building and thought that was the perfect fit. However, after getting straight A's in Pre-Med prerequisites I had a change of heart.
                   </P>
-                  <P>After coming to that conclusion one of my close friends who I used to game with told me about his new job coding</P>
+                  <P>I had no clue what to do after not pursuing that path, until I met an old friend driving a new Camaro working in web development.</P>
                   <P>
-                    This was finally what I was seeking: a technical profession that would always have new and interesting challenges. So, I taught myself how to code and the basic principles of web development and started looking for my foot in the door. What I found was a junior position at a startup that was developing a trading application, and I quickly I rose to be one of the best performing juniors.
-                  </P>
-                  <P>
-                    My next opportunity was a Food Service startup where one of my first tasks was to convert the entire code-base from Javascript to Typescript. By the end of my employment I had arisen to be teacher/mentor role.
+                     If he could do it I could. So, I taught myself how to code and the basic principles of web development. Then I found my foot in the door with a junior position at a startup that was developing a trading application. I quickly I rose to be one of the best performing juniors.
                   </P>
                   <P>
-                    The latest opportunity was a Municipal Bond startup, and again within a year I was offered a promotion and increased responsibilities. Then when the company began to grow I was promoted to a Team Lead.
+                    My next opportunity was a Food Service startup. Again having to prove myself I was assigned the task of converting the entire code-base from Javascript to Typescript. By the end of my employment I had arisen to be teacher/mentor role.
                   </P>
                   <P>
-                    I was put in charge of managing the Core Epic which serviced the maintenance, bug fixes, and small feature requests.
+                    The latest opportunity was a Municipal Bond startup. Within a year they saw my value and I was offered a promotion with extra responsibilities. Then when the company hired I was promoted a leadership role.
+                  </P>
+                  <P>
+                    As Team Lead I was put in charge of managing the Core Epic which comprised of maintenance, bug fixes, and small feature requests.
                   </P>
                 </div>
               </div>
@@ -170,18 +169,23 @@ export default function AboutMe() {
         <SidebarBottom icon={<Github />} />
         <H1 className="mx-auto mb-8">My Work</H1>
         <SidebarMain classes="overflow-scroll">
+          <OL gap={8}>
+            <li>The company had implemented a hand rolled SSR server. This meant that in additon to launching our Scala webserver we also had to lanuch the SSR server in order for the application to run. I worked with my manager to design a custom Tmux config which I implemented in bash script which would launch everything into an Apple Iterm window using Applescript long opts to either instantly run or load up the window.</li>
+            <li>There is a saying "If you can't explain it simply, you don't understand it well enough". I think this is why I've always jumped on mentorship opportunities. My most notable mentorship was a new hire with a bit of python knowledge and zero web skills. It turns out I could explain it simply enough to get him up to speed in no time, and after many lessons, questions, and PR comments he became an individual contributor in his own right.</li>
+            <li>
+              <div>
+                My least favorite impressive accomplishment was an integration with a third party no code headless CMS solution: Plasmic. The idea was that having a no code solution for our corporate site would lessen the need for engineering hours to update copy and add simple things. The issue arose from Plasmic's lack of opinion about how everything was supposed to work. 
+              </div>
+              <div className="mt-4">The solution we ended up with was re-using our current components by importing them into the CMS then modifying via the no code solution (so marketing could update it later) then re-exporting back into code and then modifying them there. This broke many things in weird ways which with my expert knowledge of React I was able to bypass using clever solutions like cloning elements and creating wrapper contexts that were more stable in this bespoke environment.
+              </div>
+            </li>
+          </OL>
+          <GithubActivityCalendar />
           <div className="flex flex-col gap-8">
             <P>I’ve honed my ability to design and implement scalable systems that meet the ever-evolving demands of my organization. With over eight years of experience in software engineering, I bring a deep-seated expertise in crafting simple solutions to complex problems that are maintainable and efficient. 
             </P>
             <P>My journey through the world of web technologies and computer science has equipped me with a broad and versatile skill set, allowing me to tackle a diverse range of challenges and deliver impactful results.
             </P>
-            <GithubActivityCalendar />
-            <H3 className="mx-auto mb-4">Notable Achievements</H3>
-            <OL gap={8}>
-              <li>Designed and implemented custom SSR Tmux Scala Webserver config to facilitate easier starting of entire application after the addition of the SSR server that used a bash script to launch everything with long opts.</li>
-              <li>Training a new hire from zero web skills to individual contributor. There was a team mate that was hired on his potential. They knew about python scripting and tinkering with QMK firmware for mechanical keyboards. In addition to my daily duties I met with him and gave him lessons for a couple of months until, reviewed his work.</li>
-              <li>I was instrumental in a new implementation with a headless CMS/no code solution that enabled marketing to update our corporate site without spending engineerings hours. This involved importing our component library into the CMS then re-exporting the assets from the CMS to use on the corporate site. The final result was a blend of the two libraries that was compiled via SSG.</li>
-            </OL>
           </div>
         </SidebarMain>
       </SectionWithSidebar>
