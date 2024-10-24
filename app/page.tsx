@@ -117,7 +117,7 @@ export default function AboutMe() {
 
   return <Column classes="flex flex-col gap-20">
     <section className="flex flex-col px-4 lg:px-10 pt-20" aria-label="Andrew Patterson Intro Title">
-      <div className="flex lg:flex-col text-center gap-8 my-auto mx-auto relative items-center">
+      <div className="flex flex-col text-center gap-8 my-auto mx-auto relative items-center">
         <Image
           src="/images/archery.png"
           alt="archery"
@@ -238,23 +238,25 @@ export default function AboutMe() {
     <section>
       <SectionWithSidebar orientation="left">
         <SidebarTop icon={<Toolbox />}  bottomOffset={0}/>
-        <SidebarMain>
+        <SidebarMain collapse="xl">
           <SectionWithImageRight
             title="Tinkering with my Tools"
             image={battleStationImg}
           >
-            <div className="flex items-center gap-4">
-              <Image src="/svgs/Vimlogo.svg" alt="VimLogo" width={100} height={100} />
-              <H2>My Editor: </H2>
-            </div>
-            <div className="flex flex-col gap-4">
-              <P>As a junior paired with a developer on my team who used Emacs, and the level of control they had over their editor astounded me. Navigating between files, moving around inside files, text manipulation, and infinite customization. It was clear to me that they were able to iterate significantly faster than I was using vanilla VS Code.</P>
-              <P>It wasn't Emacs or Vim that made them efficient, it was their level experience with their editor and their equipment.</P>
-              <P>So, since Vim is the lowest common denominator of editors I took the next 6 months learning Vim (Neovim flavor) and a QMK programmable keyboard.</P> 
-              <span className="flex flex-col md:flex-row text-xl">
-                <H4>Check out my Neovim </H4>
-                <Anchor href="https://github.com/Ampatte2/dot_files/tree/main/linux-config/nvim" title="Dot Files" className="text-1xl md:text-2xl md:ml-2 tracking-tight" />
-              </span>
+            <div className="flex flex-col">
+              <div className="flex items-center gap-4">
+                <Image src="/svgs/Vimlogo.svg" alt="VimLogo" width={100} height={100} />
+                <H2>My Editor: </H2>
+              </div>
+              <div className="flex flex-col gap-4">
+                <P>As a junior paired with a developer on my team who used Emacs, and the level of control they had over their editor astounded me. Navigating between files, moving around inside files, text manipulation, and infinite customization. It was clear to me that they were able to iterate significantly faster than I was using vanilla VS Code.</P>
+                <P>It wasn't Emacs or Vim that made them efficient, it was their level experience with their editor and their equipment.</P>
+                <P>So, since Vim is the lowest common denominator of editors I took the next 6 months learning Vim (Neovim flavor) and a QMK programmable keyboard.</P> 
+                <span className="flex flex-col md:flex-row text-xl">
+                  <H4>Check out my Neovim </H4>
+                  <Anchor href="https://github.com/Ampatte2/dot_files/tree/main/linux-config/nvim" title="Dot Files" className="text-1xl md:text-2xl md:ml-2 tracking-tight" />
+                </span>
+              </div>
             </div>
           </SectionWithImageRight>
           <div className="flex flex-col xl:grid xl:grid-cols-2 gap-8 mb-8">
@@ -320,7 +322,7 @@ export default function AboutMe() {
       </SectionWithSidebar>
     </section>
     <section>
-      <div className="mx-8 flex flex-col justify-center gap-12 my-20 text-slate-700">
+      <div className="flex flex-col justify-center gap-12 my-20 text-slate-700">
         <div className="flex mx-auto">
           <H1>Contact Me</H1>
         </div>
@@ -333,7 +335,7 @@ export default function AboutMe() {
             className="mx-auto md:mr-8 mb-auto gold-img-border"
             style={imgStyles}
           />
-          <div className="flex flex-col px-4 md:px-0">
+          <div className="flex flex-col px-4 md:px-0 mt-8 md:mt-0">
             <H3>When you:</H3>
             <OL className="text-2xl mt-4" gap={4}>
               <li>Have a project that needs to be built.</li>
@@ -369,7 +371,7 @@ export default function AboutMe() {
         </div>
         <div className="flex flex-col md:flex-row gap-4 mx-auto">
           <MailToAnchor 
-            title="Send me an Email"
+            title="Email Me"
             subject="Inquiring About: "
             body={["Howdy Andrew,"]} 
             size="lg"
@@ -379,7 +381,7 @@ export default function AboutMe() {
           />
           <TelAnchor
             className="text-3xl rounded-full font-semibold tracking-tight p-12 mx-auto"
-            title="Send me a Call/Text"
+            title="Call or Text Me"
             variant="default"
             icon={<Phone className="h-10 w-10 mr-2" />}
           />
