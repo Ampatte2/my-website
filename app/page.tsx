@@ -242,7 +242,7 @@ export default function AboutMe() {
     <section>
       <SectionWithSidebar orientation="left">
         <SidebarTop icon={<Toolbox />}  bottomOffset={0}/>
-        <SidebarMain collapse="xl">
+        <SidebarMain>
           <SectionWithImageRight
             title="Tinkering with my Tools"
             image={battleStationImg}
@@ -269,10 +269,10 @@ export default function AboutMe() {
                 <Image src="/svgs/arch-linux.svg" alt="Operating System" width={100} height={100}/>
                 <H2>Operating System: Arch</H2>
               </div>
-                  <P>I've endured the pain of endless configuration files to make <i>my</i> operating system. Even a few mistakes along the way, like realizing that I needed to update the location of vmlinuz in the config. Even though my UEFI system recognizes the install location of <b>EFI/boot/bootx86.efi</b>, the OS is looking in <b>/BOOT.</b> </P>
-                  <P>Then add in a little unassuming <b>sudo pacman -Syu</b>, restart, and get stuck at the GRUB bootloader... time to break out the ISO and start seeing where I went wrong.</P>
-                  <P>Definitely was a skill issue though.</P>
-                <P>Both OS and side project Arch Linux has taught me that at the end of the day regardless of what you're working on in software it is always: <strong>Data Structures, Directories, and Algorithms</strong></P>
+              <P>I've endured the pain of endless configuration files to make <i>my</i> operating system. Even a few mistakes along the way, like realizing that I needed to update the location of vmlinuz in the config. Even though my UEFI system recognizes the install location of <b>EFI/boot/bootx86.efi</b>, the OS is looking in <b>/BOOT.</b> </P>
+              <P>Then add in a little unassuming <b>sudo pacman -Syu</b>, restart, and get stuck at the GRUB bootloader... time to break out the ISO and start seeing where I went wrong.</P>
+              <P>Definitely was a skill issue though.</P>
+              <P>Both OS and side project Arch Linux has taught me that at the end of the day regardless of what you're working on in software it is always: <strong>Data Structures, Directories, and Algorithms</strong></P>
             </div>
             <div className="flex flex-col gap-8">
               <div className="flex items-center gap-4">
@@ -333,47 +333,47 @@ export default function AboutMe() {
         <div className="flex flex-col md:flex-row mx-auto">
           <Image
             src="/images/snow_me.png"
-            alt="archery"
-            width={225}
-            height={225}
+            alt="Me in Snow"
+            width={300}
+            height={300}
             className="mx-auto md:mr-8 mb-auto gold-img-border"
             style={imgStyles}
           />
-          <div className="flex flex-col px-4 md:px-0 mt-8 md:mt-0">
+          <div className="flex flex-col gap-4 px-4 md:px-0 mt-8 md:my-auto">
             <H3>When you:</H3>
-            <OL className="text-2xl mt-4" gap={4}>
+            <OL className="text-2xl" gap={4}>
               <li>Have a project that needs to be built.</li>
               <li>A wild idea that needs a duck.</li>
               <li>Want to fly a drone.</li>
               <li>Discuss the best editor and why it is Vim.</li>
               <li>Gripe about Typescript tooling.</li>
             </OL>
+            <div className="flex justify-between">
+              <Tooltip title="Github">
+                <AnchorIcon
+                  href="https://github.com/Ampatte2"
+                  target="_blank"
+                  icon={<Github />}
+                />
+              </Tooltip>
+              <Tooltip title="Linkedin">
+                <AnchorIcon
+                  href="https://www.linkedin.com/in/andrewmpatterson/"
+                  target="_blank"
+                  icon={<Linkedin />}
+                />
+              </Tooltip>
+              <Tooltip title="Resume">
+                <AnchorIcon
+                  href="/Andrew_Patterson_Resume.pdf"
+                  target="_blank"
+                  icon={<Document />}
+                />
+              </Tooltip>
+            </div>
           </div>
         </div>
-        <div className="flex gap-8 mx-auto">
-          <Tooltip title="Github">
-            <AnchorIcon
-              href="https://github.com/Ampatte2"
-              target="_blank"
-              icon={<Github />}
-            />
-          </Tooltip>
-          <Tooltip title="Linkedin">
-            <AnchorIcon
-              href="https://www.linkedin.com/in/andrewmpatterson/"
-              target="_blank"
-              icon={<Linkedin />}
-            />
-          </Tooltip>
-          <Tooltip title="Resume">
-            <AnchorIcon
-              href="/Andrew_Patterson_Resume.pdf"
-              target="_blank"
-              icon={<Document />}
-            />
-          </Tooltip>
-        </div>
-        <div className="flex flex-col md:flex-row gap-4 mx-auto">
+        <div className="flex flex-col md:flex-row gap-4 md:gap-20 mx-auto">
           <MailToAnchor 
             title="Email Me"
             subject="Inquiring About: "

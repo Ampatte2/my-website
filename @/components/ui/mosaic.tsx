@@ -12,6 +12,6 @@ export const Tile = (props: { image: StaticImageData, classes?: ClassValue }) =>
       className={cn("mosaic-tile", props.classes, isInViewPort ? "is-in-view" : "")}
       ref={(node) => isInViewportListener(node, () => setIsInViewPort(true), () => setIsInViewPort(false), 200)}
     >
-      <Image src={props.image} alt={props.image.src} style={{objectFit: "cover"}} />
+      <Image src={props.image} alt={props.image.src} style={{objectFit: "cover"}} priority />
     </div>
 }
