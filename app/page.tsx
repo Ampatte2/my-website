@@ -109,7 +109,7 @@ const SectionWithImageRight = (props: PropsWithChildren<SectionWithImageProps>) 
 
 const data = [
   { startDate: new Date('2018 01 01'), endDate: new Date('2019 06 01'), title: 'Procleos Labs', content: 'Securities and Crypto trading application' },
-  { startDate: new Date('2019 09 01'), endDate: new Date('2021 05 01'), title: 'Cheaper Eats', content: 'Cross platform application for restaurants ordering and back office software.' },
+  { startDate: new Date('2019 09 01'), endDate: new Date('2021 05 01'), title: 'Cheapr Eats', content: 'Cross platform application for restaurants ordering and back office software.' },
   { startDate: new Date('2021 05 '), endDate: new Date(), title: 'Bondlink', content: 'Public facing site disseminate information about Bond Sales and their communities and a user portal to manange the content' },
 ];
 
