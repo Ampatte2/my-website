@@ -108,9 +108,9 @@ const SectionWithImageRight = (props: PropsWithChildren<SectionWithImageProps>) 
   </SectionWith>
 
 const data = [
-  { startDate: new Date('2018 01 01'), endDate: new Date('2019 06 01'), title: 'Procleos Labs', content: 'Securities and Crypto trading application' },
-  { startDate: new Date('2019 09 01'), endDate: new Date('2021 05 01'), title: 'Cheapr Eats', content: 'Cross platform application for restaurants ordering and back office software.' },
   { startDate: new Date('2021 05 '), endDate: new Date(), title: 'Bondlink', content: 'Public facing site disseminate information about Bond Sales and their communities and a user portal to manange the content' },
+  { startDate: new Date('2019 09 01'), endDate: new Date('2021 05 01'), title: 'Cheapr Eats', content: 'Cross platform application for restaurants ordering and back office software.' },
+  { startDate: new Date('2018 01 01'), endDate: new Date('2019 06 01'), title: 'Procleos Labs', content: 'Securities and Crypto trading application' },
 ];
 
 export default function AboutMe() {
@@ -138,26 +138,21 @@ export default function AboutMe() {
         <H1 className="mb-8 mx-auto">Professional History</H1>
         <SidebarMain> 
           <div className="flex flex-col">
-            <div className="gap-4 flex flex-col xl:grid xl:grid-cols-2">
+            <div className="gap-8 flex flex-col xl:grid xl:grid-cols-2">
               <Timeline data={data} />
               <div className="flex flex-col">
                 <H3 className="my-8">Summary</H3>
                 <div className="flex flex-col gap-4">
-                  <P>
-                    In school I was studying to be a medical doctor specializing in psychology. I have always had a passion for fixing and building and thought that was the perfect fit. However, after getting straight A's in Pre-Med prerequisites I had a change of heart.
+                  <P>I originally set out to pursue a career in medicine, with aspirations to specialize in psychology. My passion for problem-solving and building led me to believe that the medical field was a perfect fit. After excelling in my Pre-Med coursework with straight A's, I experienced a shift in direction that led me to reconsider my path.
                   </P>
-                  <P>I had no clue what to do after not pursuing that path, until I met an old friend driving a new Camaro working in web development.</P>
-                  <P>
-                     If he could do it I could. So, I taught myself how to code and the basic principles of web development. Then I found my foot in the door with a junior position at a startup that was developing a trading application. I quickly I rose to be one of the best performing juniors.
+                  <P>At a crossroads in my career, I reconnected with an old friend who was driving a new Camaro and working in web development. Inspired by his success, I realized that if he could make the transition, so could I. Determined to explore this new field, I taught myself the fundamentals of coding and web development.
                   </P>
-                  <P>
-                    My next opportunity was a Food Service startup. Again having to prove myself I was assigned the task of converting the entire code-base from Javascript to Typescript. By the end of my employment I had arisen to be teacher/mentor role.
+                  <P>I landed my first role as a Junior Developer at a startup focused on building a trading application. Through dedication and a strong drive to learn, I quickly became one of the top performers among my peers.
+                  </P>
+                  <P>My next opportunity came at a food service startup, where I was tasked with converting the entire codebase from JavaScript to TypeScript. This challenging project allowed me to prove my technical expertise, and by the end of my tenure, I had grown into a mentor and teaching role within the team.
                   </P>
                   <P>
-                    The latest opportunity was a Municipal Bond startup. Within a year they saw my value and I was offered a promotion with extra responsibilities. Then when the company hired I was promoted a leadership role.
-                  </P>
-                  <P>
-                    As Team Lead I was put in charge of managing the Core Epic which comprised of maintenance, bug fixes, and feature requests.
+                    Most recently, I joined a municipal bond startup, where my contributions were quickly recognized. Within a year, I was offered a promotion, taking on additional responsibilities. As the company continued to expand, I was promoted to a leadership role, where I now manage the Core Epic team. In this role, I oversee maintenance, bug fixes, and feature requests, ensuring that the team continues to deliver high-quality solutions.
                   </P>
                 </div>
               </div>
@@ -170,22 +165,15 @@ export default function AboutMe() {
         <H1 className="mx-auto mb-8">My Work</H1>
         <SidebarMain classes="overflow-scroll">
           <OL gap={8}>
-            <li>The company had implemented a hand rolled SSR server. This meant that in addition to launching our Scala webserver we also had to  the SSR server in order for the application to run. I worked with my manager to design a custom Tmux config which I implemented in bash script which would launch everything into an Apple Iterm window using Applescript long opts to either instantly run or load up the window.</li>
-            <li>There is a saying "If you can't explain it simply, you don't understand it well enough". I think this is why I've always jumped on mentorship opportunities. My most notable mentorship was a new hire with a bit of python knowledge and zero web skills. It turns out I could explain it simply enough to get him up to speed in no time, and after many lessons, questions, and PR comments he became an individual contributor in his own right.</li>
-            <li>
-              <div>
-                My least favorite impressive accomplishment was an integration with a third party no code headless CMS solution: Plasmic. The idea was that having a no code solution for our corporate site would lessen the need for engineering hours to update copy and add simple things. The issue arose from Plasmic's lack of opinion about how everything was supposed to work. 
-              </div>
-              <div className="mt-4">The solution we ended up with was re-using our current components by importing them into the CMS then modifying via the no code solution (so marketing could update it later) then re-exporting back into code and then modifying them there. This broke many things in weird ways which with my expert knowledge of React I was able to bypass using clever solutions like cloning elements and creating wrapper contexts that were more stable in this bespoke environment.
-              </div>
-            </li>
+            <li>The company used a custom SSR server alongside our Scala web server, which required launching both for the application to function. I worked with my manager to create a custom Tmux configuration, implemented in a Bash script, that would launch both servers in an Apple Terminal window. Using AppleScript long options, I automated the process to either run everything instantly or load the window on demand.</li>
+            <li>I strongly believe in the power of mentorship, guided by the principle, “If you can’t explain it simply, you don’t understand it well enough.” One of my most rewarding experiences was mentoring a new hire with basic Python knowledge but no web development experience. Through clear explanations, lessons, and PR feedback, he quickly became a capable individual contributor.</li>
+            <li>One of my more challenging projects was integrating a third-party, no-code headless CMS (Plasmic) into our workflow. The idea was to reduce engineering hours for content updates, but the lack of structure in Plasmic created difficulties. The final solution involved importing our existing components into the CMS, allowing marketing to modify them, then exporting the changes back into code. This process caused numerous issues, but leveraging my React expertise, I found workarounds—such as cloning elements and creating wrapper contexts—to stabilize the integration.</li>
           </OL>
           <GithubActivityCalendar />
           <div className="flex flex-col gap-8">
-            <P>I’ve honed my ability to design and implement scalable systems that meet the ever-evolving demands of my organization. With over eight years of experience in software engineering, I bring a deep-seated expertise in crafting simple solutions to complex problems that are maintainable and efficient. 
+            <P>With over eight years of experience in software engineering, I specialize in designing and implementing scalable systems that adapt to the evolving needs of organizations. I focus on crafting simple, efficient, and maintainable solutions to complex problems.
             </P>
-            <P>My journey through the world of web technologies and computer science has equipped me with a broad and versatile skill set, allowing me to tackle a diverse range of challenges and deliver impactful results.
-            </P>
+            <P>My experience in web technologies and computer science has given me a versatile skill set, enabling me to address diverse challenges and deliver impactful results.</P>
           </div>
         </SidebarMain>
       </SectionWithSidebar>
