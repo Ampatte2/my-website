@@ -1,34 +1,28 @@
 import { Anchor, AnchorIcon, MailToAnchor, TelAnchor } from "@/components/ui/anchors";
 import { H1, H2, H3, H4, OL, P } from "@/components/ui/elements";
 import { Column } from "@/components/ui/flex";
+import { GithubActivityCalendar } from "@/components/ui/github-activity-calendar";
 import { Tile } from "@/components/ui/mosaic";
 import { SidebarBottom, SidebarMain, SidebarTop } from "@/components/ui/sidebar";
+import { Skills } from "@/components/ui/skills";
+import { Tooltip } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
+import { ClassValue } from "clsx";
 import { differenceInCalendarMonths } from 'date-fns';
-import Image, {StaticImageData} from "next/image";
+import { Mail, Phone } from "lucide-react";
+import Image, { StaticImageData } from "next/image";
 import { PropsWithChildren } from "react";
 import battleStationImg from "../public/images/battle_station.png";
-import fiveInchDroneImg from "../public/images/five_inch_drone.png";
-import headshotImg from "../public/images/headshot.jpg";
-import danteImg from "../public/images/dante_dog.png";
 import eagleScoutImg from "../public/images/eagle_scout_camping.webp";
+import headshotImg from "../public/images/headshot.jpg";
 import openDroneImg from "../public/images/open_drone.png";
-import plantsImg from "../public/images/plants.png";
-import printerImg from "../public/images/printer_img.png";
-import campfireMeImg from "../public/images/campfire_me.png";
-import Printer from "../public/svgs/3d-printer.svg";
 import DesktopComp from "../public/svgs/desktop-computer.svg";
+import Document from "../public/svgs/document.svg";
 import Drone from "../public/svgs/drone.svg";
 import EagleScout from "../public/svgs/eagle-scout.svg";
 import Github from "../public/svgs/github.svg";
-import Toolbox from "../public/svgs/toolbox.svg";
 import Linkedin from "../public/svgs/linkedin.svg";
-import Document from "../public/svgs/document.svg";
-import { Skills } from "@/components/ui/skills";
-import { GithubActivityCalendar } from "@/components/ui/github-activity-calendar";
-import { ClassValue } from "clsx";
-import { Mail, Phone  } from "lucide-react";
-import { Tooltip } from "@/components/ui/tooltip";
+import Toolbox from "../public/svgs/toolbox.svg";
 
 const formatDate = Intl.DateTimeFormat([], { dateStyle: "medium" });
 
@@ -109,7 +103,7 @@ const SectionWithImageRight = (props: PropsWithChildren<SectionWithImageProps>) 
 
 const data = [
   { startDate: new Date('2021 05 '), endDate: new Date(), title: 'Bondlink', content: 'Public facing site disseminate information about Bond Sales and their communities and a user portal to manange the content' },
-  { startDate: new Date('2019 09 01'), endDate: new Date('2021 05 01'), title: 'Cheapr Eats', content: 'Cross platform application for restaurants ordering and back office software.' },
+  { startDate: new Date('2019 09 01'), endDate: new Date('2021 05 01'), title: 'CheaprEats', content: 'Cross platform application for restaurants ordering and back office software.' },
   { startDate: new Date('2018 01 01'), endDate: new Date('2019 06 01'), title: 'Procleos Labs', content: 'Securities and Crypto trading application' },
 ];
 
@@ -127,10 +121,10 @@ export default function AboutMe() {
         />
         <div>
           <H1>Andrew M. Patterson</H1>
-          <H2>Software Engineer, UAS Pilot, Tinkerer</H2>
+          <H2>Frontend Software Engineer</H2>
         </div>
       </div>
-      <H3 className="mx-auto text-center my-8 md:my-20">There is no such thing as a problem, only a challenge waiting to be solved.</H3>
+      <H3 className="mx-auto text-center my-8 md:my-20">I don't believe in problems, only good challenges.</H3>
     </section>
     <section aria-label="Professional History and Work Summary">
       <SectionWithSidebar orientation="left">
@@ -183,56 +177,11 @@ export default function AboutMe() {
       <Skills />
     </section>
     <section aria-label="Leadership UAS Pilot and Freestyle Drone">
-      <SectionWithSidebar orientation="right">
-        <H1 className="mx-auto mb-8">Leadership</H1>
-        <SidebarMain collapse="xl">
-          <SectionWithImageRight
-            title="Team Lead"
-            image={headshotImg}
-          >
-            <P>
-              Whether collaborating with cross-functional teams or leading projects independently my career has been defined by a relentless pursuit of knowledge and a passion for innovation.
-            </P>
-            <P>As a junior level developer I quickly learned and built upon the patterns that existed in the codebase. Within a year I was knowledgable enough to teach other juniors and was promoted to team lead.</P>
-          </SectionWithImageRight>
-          <SectionWithImageLeft
-            title="Eagle Scout"
-            image={eagleScoutImg}
-          >
-            <P>Proud recipient of the highest honor in Scouts the Eagle Scout rank which was awarded for my organization and completion of a project that benefited the community</P>
-            <P>I lead the restoration of a historic building at Pioneer Living History Museum in Northern Phoenix. From getting approvals, to organizing all the volunteers, get donations for the materials, I worked with the museum to restore a historic piece of Arizona</P>
-          </SectionWithImageLeft>
-        </SidebarMain>
-        <SidebarTop icon={<EagleScout />} />
-      </SectionWithSidebar>
-      <SectionWithSidebar orientation="right">
-        <SidebarMain collapse="xl">
-          <SectionWithImageRight
-            title="UAS Pilot Part 107 Licensed"
-            image={openDroneImg}
-          >
-            <P>Custom built from my own designs which I solder together, assemble the frame, and flash/configure the firmware.</P>
-            <P>The moments that you get to fly are amazing, but the real meat and potatoes comes from crashing and building them. The <strong>best</strong> problems come from working on embedded systems. Having the physical component cost of "just trying it out" forces you to become creative and try different solutions</P>
-            <P>The drones are programmed with Betaflight for it's freestyle performance, the gear is: ImmersionRC with HDO2.1 goggles and ELRS Radiomaster Boxer</P>
-          </SectionWithImageRight>
-          <SectionWithImageLeft
-            title="FPV Drone Freestyle"
-            image={fiveInchDroneImg}
-          >
-            <P>The freedom of 360 degree movement, feeling like you are right there in the action, and the harmony of multiple pieces of technology working in concert are just a few reasons I love drones.</P>
-            <P>I have 3 different drones, the one in the photo is a 5 inch quad with 60 amp ESCs and massive 2406 stator / 2450 KV motors running 6s. It's a monster that is a lord of the sky.</P>
-            <P> To round out the fleet I have a nimble 4 inch quad 4-6s and a little tiny 65mm racing quad that I toot around inside with.</P>
-          </SectionWithImageLeft>
-        </SidebarMain>
-        <SidebarBottom icon={<Drone />} />
-      </SectionWithSidebar>
-    </section>
-    <section>
       <SectionWithSidebar orientation="left">
         <SidebarTop icon={<Toolbox />}  bottomOffset={0}/>
         <SidebarMain>
           <SectionWithImageRight
-            title="Tinkering with my Tools"
+            title="My Tools"
             image={battleStationImg}
           >
             <div className="flex flex-col">
@@ -277,40 +226,46 @@ export default function AboutMe() {
               </span>
             </div>
           </div>
+        <SidebarBottom icon={<Toolbox />}  bottomOffset={0}/>
         </SidebarMain>
       </SectionWithSidebar >
-      <SectionWithSidebar orientation="left" >
-        <SidebarBottom icon={<Printer />} bottomOffset={0} />
+    </section>
+    <section>
+      <SectionWithSidebar orientation="right">
+        <H1 className="mx-auto mb-8">Leadership</H1>
         <SidebarMain collapse="xl">
-          <SectionWithImageLeft
-            title="3D Printing"
-            image={printerImg}
-          >
-            <P>Started with an Ender 5 Pro and now using Resin SLA 3D Printer to replace bespoke pieces of plastic and make compliant mechanisms.</P>
-            <P>I love building and designing parts from scratch using programs like Fusion 360 or Blender. These programs have taught me about the different ways that you can go about creating 3D objects and manipulating them.</P>
-            <P>I prefer Blender's approach that you perform mathematical operations like unions to achieve the final result, whereas Fusion thinks of objects that can be connected and sculpted.</P>
-          </SectionWithImageLeft>
           <SectionWithImageRight
-            title="Dante Dog"
-            image={danteImg}
+            title="Team Lead"
+            image={headshotImg}
           >
-            <P>This is my boy we hang out and do just about everything together.</P>
-            <P>He's a four year old Border Collie Corgi mixed breed, he loves running and eating all the food he can find or coerce out of me with those puppy dog eyes.</P>
+            <P>
+              Whether collaborating with cross-functional teams or leading projects independently my career has been defined by a relentless pursuit of knowledge and a passion for innovation.
+            </P>
+            <P>As a junior level developer I quickly learned and built upon the patterns that existed in the codebase. Within a year I was knowledgable enough to teach other juniors and was promoted to team lead.</P>
           </SectionWithImageRight>
           <SectionWithImageLeft
-            title="Gardening"
-            image={plantsImg}
+            title="Eagle Scout"
+            image={eagleScoutImg}
           >
-            <P>After working on a computer all day with it's infinite problems, it's nice to sit back and just do one thing at a time. Plants are fairly simple in that way, they take a while to change and you should not change them too quickly or often.</P>
+            <P>Proud recipient of the highest honor in Scouts the Eagle Scout rank which was awarded for my organization and completion of a project that benefited the community</P>
+            <P>I lead the restoration of a historic building at Pioneer Living History Museum in Northern Phoenix. From getting approvals, to organizing all the volunteers, get donations for the materials, I worked with the museum to restore a historic piece of Arizona</P>
           </SectionWithImageLeft>
+        </SidebarMain>
+        <SidebarTop icon={<EagleScout />} />
+      </SectionWithSidebar>
+      <SectionWithSidebar orientation="right">
+        <SidebarMain collapse="xl">
           <SectionWithImageRight
-            title="Outdoors"
-            image={campfireMeImg}
+            title="UAS Pilot Part 107 Licensed"
+            image={openDroneImg}
           >
-            <P>The outdoors is where it is at, I am an avid backpacker, camper, hiker.</P>
-            <P>Usually you can find me off exploring some unmarked trail or figuring out how to get to the top of the next mountain.</P>
+          
+            <P>Custom built from my own designs which I solder together, assemble the frame, and flash/configure the firmware.</P>
+            <P>The moments that you get to fly are amazing, but the real meat and potatoes comes from crashing and building them. The <strong>best</strong> problems come from working on embedded systems. Having the physical component cost of "just trying it out" forces you to become creative and try different solutions</P>
+            <P>The drones are programmed with Betaflight for it's freestyle performance, the gear is: ImmersionRC with HDO2.1 goggles and ELRS Radiomaster Boxer</P>
           </SectionWithImageRight>
         </SidebarMain>
+        <SidebarBottom icon={<Drone />} />
       </SectionWithSidebar>
     </section>
     <section>
@@ -332,11 +287,10 @@ export default function AboutMe() {
             <OL className="text-2xl" gap={4}>
               <li>Have a project that needs to be built.</li>
               <li>A wild idea that needs a duck.</li>
-              <li>Want to fly a drone.</li>
               <li>Discuss the best editor and why it is Vim.</li>
               <li>Gripe about Typescript tooling.</li>
             </OL>
-            <div className="flex justify-between">
+            <div className="flex gap-8">
               <Tooltip title="Github">
                 <AnchorIcon
                   href="https://github.com/Ampatte2"
