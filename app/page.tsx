@@ -124,7 +124,8 @@ export default function AboutMe() {
                     <H2>Frontend Software Engineer</H2>
                 </div>
             </div>
-            <H3 className="mx-auto text-center my-8 md:my-20">I don't believe in problems, only good challenges.</H3>
+            <H3 className="mx-auto text-center my-8 md:mt-20 ">I don't believe in problems, only good challenges.</H3>
+            <P className="mx-auto px-10 my-8 md:my-20">Frontend Developer with a proven track record of designing and implementing high-performance web solutions that directly contribute to revenue growth and operational efficiency. Adept at leveraging cutting-edge technologies to optimize user experiences, streamline processes, and enhance conversion rates. Instrumental in the development of scalable SaaS platforms and dynamic web applications. Skilled in collaborating with cross-functional teams to deliver innovative digital strategies that align with business objectives, ensuring measurable ROI. Passionate about solving complex technical challenges while driving measurable financial impact for the organization.</P>
         </section>
         <section aria-label="Professional History and Work Summary">
             <SectionWithSidebar orientation="left">
@@ -137,12 +138,12 @@ export default function AboutMe() {
                             <div className="flex flex-col">
                                 <H3 className="my-8">Summary</H3>
                                 <div className="flex flex-col gap-4">
-                                    <p>In my career I have a consistently delivered high-quality products on time. I excel at accurately estimating project timelines and proactively identifying potential challenges based on current system capabilities. By leveraging strong communication skills and effective collaboration with my team, I adapt seamlessly to the evolving needs of any product.</p>
-                                    <p>I am passionate about saving engineering hours through innovative and efficient solutions. For example, I once delivered a new feature two weeks ahead of schedule by identifying that most of the required elements and layouts were already in place. Instead of duplicating effort, I strategically streamlined the process by extracting and optimizing existing components.</p>
-                                    <p>But don’t just take my word for it—here’s what the Director of Frontend Engineering at my last position had to say:</p>
-                                    <p>
+                                    <P>In my career I have a consistently delivered high-quality products on time. I excel at accurately estimating project timelines and proactively identifying potential challenges based on current system capabilities. By leveraging strong communication skills and effective collaboration with my team, I adapt seamlessly to the evolving needs of any product.</P>
+                                    <P>I am passionate about saving engineering hours through innovative and efficient solutions. For example, I once delivered a new feature two weeks ahead of schedule by identifying that most of the required elements and layouts were already in place. Instead of duplicating effort, I strategically streamlined the process by extracting and optimizing existing components.</P>
+                                    <P>But don’t just take my word for it—here’s what the Director of Frontend Engineering at my last position had to say:</P>
+                                    <P>
                                         <i>“Andrew is an ambitious software engineer. He's always looking for ways to improve not only his craft but the codebase and team around him. He is a sharp engineer and has had the opportunity to take the lead of my team on numerous occasions whenever I'm away from the office. Each time he's handled it with confidence and competence. I believe Andrew would be an immediate asset to any engineering team and I would hire him again given the opportunity.” - Justin Lieder</i>
-                                    </p>
+                                    </P>
                                 </div>
                             </div>
                         </div>
