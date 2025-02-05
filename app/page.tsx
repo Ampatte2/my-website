@@ -175,10 +175,11 @@ export default function AboutMe() {
         <section aria-label="Leadership UAS Pilot and Freestyle Drone">
             <SectionWithSidebar orientation="left">
                 <SidebarTop icon={<Toolbox />}  bottomOffset={0}/>
-                <SidebarMain>
+                <SidebarMain collapse="xl">
                     <SectionWithImageRight
                         title="My Tools"
                         image={battleStationImg}
+
                     >
                         <div className="flex flex-col">
                             <div className="flex items-center gap-4">
