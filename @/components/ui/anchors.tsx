@@ -19,7 +19,7 @@ const AnchorIcon = React.forwardRef<
   AnchorIconProps
   >(({ className, icon, title, ...props }, ref) => 
   <a 
-    className={cn("fill-slate-700 rounded-md inline-flex items-center justify-center whitespace-nowrap font-medium transition-fill [&>svg]:h-16 [&>svg]:w-16", className)} 
+    className={cn("fill-slate-700 rounded-md inline-flex items-center justify-center whitespace-nowrap font-medium transition-fill [&>svg]:h-12 [&>svg]:w-12", className)} 
     ref={ref}
     {...props}
   >
@@ -53,7 +53,7 @@ const MailToAnchor = React.forwardRef<
   subject: string, 
   body: string[], 
 }>((props, ref) => 
-  <AnchorButton 
+  <AnchorIcon 
     aria-label="Contact Email Mailto Link" 
     href={`mailto:andrew@andrewmpatterson.com?subject=${props.subject}&body=${props.body.join(mailToSpaceSeperator + mailToSpaceSeperator)}`} 
     ref={ref}
@@ -67,7 +67,7 @@ const TelAnchor = React.forwardRef<
   HTMLAnchorElement,
   AnchorButtonProps 
 & VariantProps<typeof buttonVariants>>((props, ref) => 
-  <AnchorButton 
+  <AnchorIcon 
     aria-label="Call Me at 623-692-6992"
     href={"tel:623-692-6992"} 
     ref={ref}

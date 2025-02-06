@@ -182,9 +182,9 @@ export default function AboutMe() {
 
                     >
                         <div className="flex flex-col">
-                            <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-4 mb-8">
                                 <Image src="/svgs/Vimlogo.svg" alt="VimLogo" width={100} height={100} />
-                                <H2>My Editor: </H2>
+                                <H1 className="mx-auto">My Editor</H1>
                             </div>
                             <div className="flex flex-col gap-4">
                                 <P>As a junior paired with a developer on my team who used Emacs, and the level of control they had over their editor astounded me. Navigating between files, moving around inside files, text manipulation, and infinite customization. It was clear to me that they were able to iterate significantly faster than I was using vanilla VS Code.</P>
@@ -279,15 +279,27 @@ export default function AboutMe() {
                         className="mx-auto md:mr-8 mb-auto gold-img-border"
                         style={imgStyles}
                     />
-                    <div className="flex flex-col gap-4 px-4 md:px-0 mt-8 md:my-auto">
+                    <div className="flex flex-col gap-4 px-4 md:px-0 mt-8 md:my-none">
                         <H3>When you:</H3>
-                        <OL className="text-2xl" gap={4}>
+                        <OL className="text-xl" gap={4}>
                             <li>Have a project that needs to be built.</li>
                             <li>A wild idea that needs a duck.</li>
                             <li>Discuss the best editor and why it is Vim.</li>
                             <li>Gripe about Typescript tooling.</li>
                         </OL>
-                        <div className="flex gap-8">
+                        <div className="flex flex-row gap-4 justify-between">
+                            <Tooltip title="Email">
+                                <MailToAnchor 
+                                    subject="Inquiring About: "
+                                    body={["Howdy Andrew,"]} 
+                                    icon={<Mail />}
+                                />
+                            </Tooltip>
+                            <Tooltip title="Telephone">
+                                <TelAnchor
+                                    icon={<Phone />}
+                                />
+                            </Tooltip>
                             <Tooltip title="Github">
                                 <AnchorIcon
                                     href="https://github.com/Ampatte2"
@@ -311,23 +323,6 @@ export default function AboutMe() {
                             </Tooltip>
                         </div>
                     </div>
-                </div>
-                <div className="flex flex-col md:flex-row gap-4 md:gap-20 mx-auto">
-                    <MailToAnchor 
-                        title="Email Me"
-                        subject="Inquiring About: "
-                        body={["Howdy Andrew,"]} 
-                        size="lg"
-                        variant="default"
-                        className="text-3xl rounded-full font-semibold tracking-tight p-12 mx-auto"
-                        icon={<Mail className="h-10 w-10 mr-2" />}
-                    />
-                    <TelAnchor
-                        className="text-3xl rounded-full font-semibold tracking-tight p-12 mx-auto"
-                        title="Call or Text Me"
-                        variant="default"
-                        icon={<Phone className="h-10 w-10 mr-2" />}
-                    />
                 </div>
             </div>
         </section>

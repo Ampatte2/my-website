@@ -1,6 +1,6 @@
 export const isInViewportListenerBase = <K extends keyof WindowEventMap>(type: K) => (node: HTMLElement | null, onInView: () => void, onOutsideView: () => void, bottomOffset: number) => {
   globalThis.addEventListener(type, () => {
-    if (node && node?.getBoundingClientRect().top < globalThis.innerHeight  && node?.getBoundingClientRect().bottom < globalThis.innerHeight) {
+    if (node && node?.getBoundingClientRect().top < globalThis.innerHeight  && (node?.getBoundingClientRect().bottom + bottomOffset) < globalThis.innerHeight) {
       onInView();
     } else {
       onOutsideView();

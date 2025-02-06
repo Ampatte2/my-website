@@ -86,7 +86,7 @@ export const GithubActivityCalendar = () => {
     }
   },[innerWidth]);
 
-  return <ActivityCalendar
+    return <ActivityCalendar
     colorScheme="light"
     theme={{ light: ["#FFFFFF", "#80ff80", "#4dff4d", "#1aff1a", "#00cc00"] }}
     data={activityData}
